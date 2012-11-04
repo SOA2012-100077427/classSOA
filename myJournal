@@ -1,0 +1,508 @@
+RUNNING ROTTENPOTATOES PROJECT - SOA2012-77427
+===========================================
+4.1  ------->Rails basic: from zero to CRUD
+===========================================
+STEPS
+1. saasbook@saasbook:~/Documents$ rails new myrottenpotatoes -T
+2. Edit the Gemfile
+3.  saasbook@saasbook:~/Documents/myrottenpotatoes$ bundle install --without production
+#Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.
+4. saasbook@saasbook:~/Documents/myrottenpotatoes$ rails server
+# Point the browser to http://localhost:3000
+ # then point the browser to http://localhost:3000/movies---- and here, we should get a routing error from rails
+
+5. saasbook@saasbook:~/Documents/myrottenpotatoes$ rake routes
+#it prints nothing since there are no routes in our brand new app
+6. Edit config/routes.rb
+7. Delete the file public/index.html
+8. Save and run "rake routes" again
+9. reload the page http://localhost:3000/movies
+  #you shouls see a different error " uninitialised constant MoviesController"-- This is good news--
+===================================
+4.2 ------>Database and migration
+====================================
+STEPS
+1.  saasbook@saasbook:~/Documents/myrottenpotatoes$ rails generate migration create_movies
+  #Adding new table that stores each movies title, ratings, description and release date
+  #if success, u will find something like "20121021052925_create_movies.rb" in db folder
+2.Edit this file "20121021052925_create_movies.rb" in db folder
+3.saasbook@saasbook:~/Documents/myrottenpotatoes$ rake db:migrate
+  # this is to actually apply migration and creat this table
+ #NOTE: "rake db:rollback"will undo the migration by running its down Method.
+=========================================
+4.3   -------> Model:Active record basics
+=========================================
+STEPS
+1.saasbook@saasbook:~/Documents/myrottenpotatoes/app/models$ nano movie.rb
+  # creating a file "movie.rb" under the directory above
+  #saasbook@saasbook:~/Documents/myrottenpotatoes/app/models$ cat movie.rb 
+              #clas Movie < ActiveRecord::Base
+              # end
+2.saasbook@saasbook:~/Documents/myrottenpotatoes/app/models$ rails console
+    #Loading development environment (Rails 3.1.0), copy and paste Fig 4.3 to execute the code   
+    # this is an example of ActiveRecord Features
+3. 
+
+=================================================
+4.4  ----------> CONTROLLERS AND VIEWS
+===============================================
+
+STEPS:
+1.. To implement the Index RESTful action, we must define an index action in app/controllers/movies_controller.rb and a view template in app/views/movies/index.html.haml. Create these two files using Figure 4.5 (you will need to create the intermediate directory app/views/movies/).....
+   (i) FIRST FILE
+    # This file is app/controllers/movies_controller.rb
+    # saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat movies_controller.rb
+class MoviesController < ApplicationController
+  def index
+    @movies = Movie.all
+  end
+end
+    (ii) SECOND FILE
+      #  This file is app/views/movies/index.html.haml
+      #  saasbook@saasbook:~/classSOA/myrottenpotatoes/app/views/movies$ cat index.html.haml
+--------------------------------------------
+%h2 All Movies
+
+%table#movies
+  %thead
+    %tr
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title 
+        %td= movie.rating
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+     ----------------------------------
+2.. To verify this, restart the application (rails server in the app’s root directory) and visit http://localhost:3000/movies/, the URI corresponding to the index action. If all is well,you should see a list of any movies in the database.
+
+
+
+3.. The default file app/views/layouts/application.html.erb created by the rails new command uses Rails’ erb templating system, but since we like Haml’s conciseness, we recommend deleting that file and replacing it with Figure 4.7.
+  #so here, we delete the that file from layouts folder
+  # replace it by the code below and save as application.html.haml
+   -----------------------
+   !!! 5
+%html
+  %head
+    %title Rotten Potatoes!
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+    = yield
+--------------------------
+
+3.5... screencast 4.4.1
+********PROBLEM FOUND********
+If I leave the "-# in app/views/movies/show.html.haml"
+in the show.html.haml... it doesn't work
+********SOLUTION**************
+I deleted it for it to work
+****************************
+
+so the codes are below
+----------------------------
+-# in app/views/movies/show.html.haml
+ 
+%h2 Details about #{@movie.title}
+ 
+%ul#details
+  %li
+    Rating:
+    = @movie.rating
+  %li
+    Released on:
+    = @movie.release_date.strftime("%B %d, %Y")
+ 
+%h3 Description:
+ 
+%p#description= @movie.description
+----------------------------------------------------
+lIkewise, we put the following code on movie_controller.rb
+------------------------------------------------
+    # in app/controllers/movies_controller.rb
+     
+    def show
+      id = params[:id] # retrieve movie ID from URI route
+      @movie = Movie.find(id) # look up movie by unique ID
+      # will render app/views/movies/show.html.haml by default
+    end
+----------------------------------
+    
+4..Since the current “bare-bones” views are ugly, as long as we’re going to keep working on this app we might as well have something more attractive to look at. Copy the simple CSS styling below into app/assets/stylesheets/application.css, which is already included by line 5 of the application.html.haml template.
+   # here is the code below:
+--------------------------
+    /* Simple CSS styling for RottenPotatoes app */
+    /* Add these lines to app/assets/stylesheets/application.css */
+     
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: White;
+      color: DarkSlateGrey;
+      font-family: Tahoma, Verdana, sans-serif;
+      font-size: 10pt;
+    }
+    div#main {
+      margin: 0;
+      padding: 0 20px 20px;
+    }
+    a {
+      background: transparent;
+      color: maroon;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    h1 {
+      color: maroon;
+      font-size: 150%;
+      font-style: italic;
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid DarkSlateGrey;
+    }
+    h1.title {
+      margin: 0 0 1em;
+      padding: 10px;
+      background-color: orange;
+      color: white;
+      border-bottom: 4px solid gold;
+      font-size: 2em;
+      font-style: normal;
+    }
+    table#movies {
+      margin: 10px;
+      border-collapse: collapse;
+      width: 100%;
+      border-bottom: 2px solid black;
+    }
+    table#movies th {
+      border: 2px solid white;
+      font-weight: bold;
+      background-color: wheat;
+    }
+    table#movies th, table#movies td {
+      padding: 4px;
+      text-align: left;
+    }
+    #notice, #warning {
+      background: rosybrown;
+      margin: 1em 0;
+      padding: 4px;
+    }
+    form label {
+      display: block;
+      line-height: 25px;
+      font-weight: bold;
+      color: maroon;
+    }
+---------------------------------------
+========================================
+4.5   (NB:nothing to do.., just reading)
+=======================================
+
+==============================================
+4.6--------->FORM SUBMISSION: NEW AND CREATE
+============================================
+STEPS
+
+1.. Of course, before we go further, we need to give the user a way to get to the fill-in form we’re about to create. Since the form will be for creating a new movie, it will correspond to the RESTful action new, and we will follow convention by placing the form in app/views/movies/new.html.haml.
+  # We create a new file under the movies directory
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app/views/movies$ cat new.html.haml
+We can therefore take advantage of the automatically-provided RESTful URI helper new_movie_path to create a link to the form. 
+      #We Do this by adding a single line to the end of index.html.haml: which is found in app/views/movies/index.html.haml
+ # here is the single line of  code:
+-------------------------------------
+    -# add to end of index.html.haml
+     
+    = link_to 'Add new movie', new_movie_path
+-----------------------------------------
+# NB: this is how our index.html.haml code looks like now
+ saasbook@saasbook:~/classSOA/myrottenpotatoes/app/views/movies$ cat index.html.haml
+------------------------------
+%h2 All Movies
+ 
+%table#movies
+  %thead
+    %tr
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.title
+        %td= movie.rating
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+    -# add to end of index.html.haml
+     
+    = link_to 'Add new movie', new_movie_path
+------------------------------------
+
+2.. Recall that by default, every controller method automatically tries to render a template with the corresponding name (in this case new.html.haml), so you can just add the following trivial new method to movies_controller.rb:
+  # Ading the following code to movies_controller.rb
+---------------
+    def new
+      # default: render 'new' template
+    end
+---------------------
+  # Here is the new code for movies_controller.rb
+  saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat movies_controller.rb
+-----------------------------------------
+# This file is app/controllers/movies_controller.rb
+class MoviesController < ApplicationController
+  def index
+    @movies = Movie.all
+  end
+end
+    def new
+      # default: render 'new' template
+    end
+----------------------------------------
+
+3.. Rails makes it easy to describe a fill-in form using form tag helpers available to all views. Put the code below in Figure 4.10 into app/views/movies/new.html.haml
+  # Here is how our new.html.haml looks like
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app/views/movies$ cat new.html.haml
+---------------------------
+   %h2 Create New Movie
+
+= form_tag movies_path, :method => :post do
+
+  = label :movie, :title, 'Title'
+  = text_field :movie, :title
+
+  = label :movie, :rating, 'Rating'
+  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+ 
+  = label :movie, :release_date, 'Released On'
+  = date_select :movie, :release_date
+
+  = submit_tag 'Save Changes'
+-----------------------------
+
+
+=================================
+4.7 ------------>
+=====================================
+STEPS:
+
+1.. Remove the debug breakpoint from the controller action (which you inserted if you modified your code according to Screencast 4.7.1) and modify it to look like the listing below; then test out this behavior by reloading the movie listing page, clicking Add New Movie, and submitting the form.
+   # The code is given below
+  #saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat  movies_controller.rb
+--------------------
+    # in movies_controller.rb
+    def create
+      @movie = Movie.create!(params[:movie])
+      redirect_to movies_path
+    end
+-----------------
+
+# NOw, our new movies_controller.rb looks like
+--------------------
+# This file is app/controllers/movies_controller.rb
+class MoviesController < ApplicationController
+  def index
+    @movies = Movie.all
+  end
+end
+    def new
+      # default: render 'new' template
+    end
+    # in movies_controller.rb
+    def create
+      @movie = Movie.create!(params[:movie])
+      redirect_to movies_path
+    end
+----------------------
+
+2.. Make application.html.haml look like Figure 4.12—this requires adding four lines of code between %body and =yield to display any pending flash messages at the beginning of the page body.
+NB: Recall that app/views/layouts/application.html.haml is the template used to “wrap” all views by default
+# The code is given below
+---------------------
+%body
+    -# this goes just inside %body:
+    - if flash[:notice]
+      #notice.message= flash[:notice]
+    - elsif flash[:warning]
+      #warning.message= flash[:warning]
+
+    = yield
+--------------------
+# so now, our application.html.haml looks like:
+# saasbook@saasbook:~/classSOA/myrottenpotatoes/app/views/layouts$ cat application.html.haml
+----------------------------
+!!! 5
+%html
+  %head
+    %title Rotten Potatoes!
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+    -# this goes just inside %body:
+    - if flash[:notice]
+      #notice.message= flash[:notice]
+    - elsif flash[:warning]
+      #warning.message= flash[:warning]
+
+    = yield
+------------------------------
+
+===============================================
+4.8--------->Finishing CRUD: Edit/Update and Destroy
+================================================
+STEPS:
+1..we first need to give the user a way to specify the Edit action, so before going further, modify the show.html.haml view so its last two lines match the code below, where line 2 uses the helper edit_movie_path to generate a RESTful URI that will trigger the edit action for @movie.
+#The code is given below:
+#saasbook@saasbook:~/classSOA/myrottenpotatoes/app/views/movies$ cat show.html.haml
+-----------------
+-# modify last 2 lines of app/views/movies/show.html.haml to:
+= link_to 'Edit info', edit_movie_path(@movie)
+= link_to 'Back to movie list', movies_path
+-----------------------
+
+2..As we’ll see, when your app introduces relationships among different kinds of resources, such as a moviegoer having favorite movies, the RESTful URIs become more complicated and the helpers become correspondingly more concise and easy to read. Below are the actual controller methods you’ll need to add to movies_controller.rb to try out this feature, so go ahead and add them.
+
+# The code is given below:
+--------------------------------
+    # in movies_controller.rb
+     
+    def edit
+      @movie = Movie.find params[:id]
+    end
+     
+    def update
+      @movie = Movie.find params[:id]
+      @movie.update_attributes!(params[:movie])
+      flash[:notice] = "#{@movie.title} was successfully updated."
+      redirect_to movie_path(@movie)
+    end
+------------------------------
+# Our new movies_controller.rb now looks like the code given below:
+#saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat movies_controller.rb
+------------------------
+# This file is app/controllers/movies_controller.rb
+class MoviesController < ApplicationController
+  def index
+    @movies = Movie.all
+  end
+end
+    def new
+      # default: render 'new' template
+    end
+    # in movies_controller.rb
+    def create
+      @movie = Movie.create!(params[:movie])
+      redirect_to movies_path
+    end
+    # in movies_controller.rb
+     
+    def edit
+      @movie = Movie.find params[:id]
+    end
+     
+    def update
+      @movie = Movie.find params[:id]
+      @movie.update_attributes!(params[:movie])
+      flash[:notice] = "#{@movie.title} was successfully updated."
+      redirect_to movie_path(@movie)
+    end
+-------------------------------
+
+3... The last CRUD action is Delete, which Figure 4.3 shows can be accomplished by calling destroy on an ActiveRecord model. As with the Update action, it’s common practice to respond to a Delete by destroying the object and then returning the user to some other useful page (such as the Index view) and displaying a confirmation message that the item was deleted, so we already know how to write the controller method—add the following lines to movies_controller.rb:
+
+# The code is given below:
+-----------------------
+    def destroy
+      @movie = Movie.find(params[:id])
+      @movie.destroy
+      flash[:notice] = "Movie '#{@movie.title}' deleted."
+      redirect_to movies_path
+    end
+----------------------
+
+# Then our new movie_controller.rb now looks like:
+#saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat movies_controller.rb
+---------------------------------------------
+# This file is app/controllers/movies_controller.rb
+class MoviesController < ApplicationController
+  def index
+    @movies = Movie.all
+  end
+end
+    def new
+      # default: render 'new' template
+    end
+    # in movies_controller.rb
+    def create
+      @movie = Movie.create!(params[:movie])
+      redirect_to movies_path
+    end
+    # in app/controllers/movies_controller.rb screencast 4.4.1
+     
+    def show
+      id = params[:id] # retrieve movie ID from URI route
+      @movie = Movie.find(id) # look up movie by unique ID
+      # will render app/views/movies/show.html.haml by default
+    end
+
+    # in movies_controller.rb
+     
+    def edit
+      @movie = Movie.find params[:id]
+    end
+     
+    def update
+      @movie = Movie.find params[:id]
+      @movie.update_attributes!(params[:movie])
+      flash[:notice] = "#{@movie.title} was successfully updated."
+      redirect_to movie_path(@movie)
+    end
+    # the delete function- step 3 of 4.8
+    def destroy
+      @movie = Movie.find(params[:id])
+      @movie.destroy
+      flash[:notice] = "Movie '#{@movie.title}' deleted."
+      redirect_to movies_path
+    end
+
+-----------------------------------
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
