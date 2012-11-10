@@ -1,0 +1,33 @@
+Introduction to Service Oriented Analysis and Design
+Team Assignment 5 due 11th NOv 2012
+Musa Touray-- Group 1
+-------------
+Ruby on Rails
+Make sure you have already read §5.1 – §5.3.  Please start this assignment early because it will be extensive.
+1. Search and learn more about regular expressions and come to my ofﬁce if you have questions.  Then, use 
+rubular.com to create a regular expression that…
+Matches these: 
+When I am logged in	
+When he is logged in	
+When I log in	
+When he logs in
+When they are logged in	
+When they log in	
+When logged in
+
+But does NOT match these:
+When helogs in	
+Whenhe logs in	
+When in	
+I am logged in	
+When logging in
+---------
+ANSWER: 
+       /When\s((\D+\s\w+)|logged)\sin/
+
+
+
+
+
+
+
