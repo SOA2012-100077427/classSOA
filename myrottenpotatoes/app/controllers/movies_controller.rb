@@ -3,13 +3,13 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
   end
-end
     def new
       # default: render 'new' template
     end
     # in movies_controller.rb
     def create
       @movie = Movie.create!(params[:movie])
+      flash[:notice] = "#{@movie.title} was successfully created."
       redirect_to movies_path
     end
     # in app/controllers/movies_controller.rb screencast 4.4.1
@@ -39,4 +39,12 @@ end
       flash[:notice] = "Movie '#{@movie.title}' deleted."
       redirect_to movies_path
     end
+    # add to movies_controller.rb, anywhere inside step 6 of 5.6
+    #  'class MoviesController < ApplicationController':
 
+	def search_tmdb
+	  # hardwire to simulate failure
+	  flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
+	  redirect_to movies_path
+	end
+end
