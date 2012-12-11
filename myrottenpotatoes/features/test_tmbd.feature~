@@ -1,0 +1,14 @@
+# it would be nice if we could do this:
+Hardware = Movie.find_by_title('Hardware')
+alice,bob = Moviegoer.find(alice_id, bob_id)
+# alice likes Hardware, bob hates it
+alice_review = Review.new(:potatoes => 5)
+bob_review   = Review.new(:potatoes => 2)
+# a movie has many reviews:
+Hardware.reviews = [alice_review, bob_review]
+Hardware.save!
+# a moviegoer has many reviews:
+alice.reviews << alice_review
+alice.save!
+# can we find out who wrote each review?
+Hardware.reviews.map { |r| r.moviegoer.name } # => ['alice','bob']
