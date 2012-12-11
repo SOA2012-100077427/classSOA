@@ -1379,7 +1379,7 @@ STEPS:
 
 URL: http://pastebin.com/Ch2FTEzA
 the code is given below
-myrottenpotatoes/db/migrate$ cat _create_reviews.rb
+myrottenpotatoes/db/migrate$ cat 20121211100012_create_reviews.rb
 ---------------------------------------
 # Run 'rails generate migration create_reviews' and then
 #   edit db/migrate/*_create_reviews.rb to look like this:
@@ -1396,7 +1396,7 @@ class CreateReviews < ActiveRecord::Migration
 end
 ---------------------------------------
 
-	b) Figure 7.14: Middle (b) Put this new Review model in app/models/review.rb. Bottom
+	b) Figure 7.14: Middle (b) Put this new Review model in app/models/review.rb. 
 
 URL: http://pastebin.com/GBTCH47f
 the code is given below:
@@ -1421,8 +1421,27 @@ the code is given below:
 ------------------------------------
 
 
-2.
-
+2. You should now be able to start rails console and successfully execute the examples in Figure 7.13.
+URL: http://pastebin.com/419hfNtY
+the code is given below:
+---------------------------------------
+# it would be nice if we could do this:
+inception = Movie.find_by_title('Inception')
+alice,bob = Moviegoer.find(alice_id, bob_id)
+# alice likes Inception, bob hates it
+alice_review = Review.new(:potatoes => 5)
+bob_review   = Review.new(:potatoes => 2)
+# a movie has many reviews:
+inception.reviews = [alice_review, bob_review]
+inception.save!
+# a moviegoer has many reviews:
+alice.reviews << alice_review
+alice.save!
+# can we find out who wrote each review?
+inception.reviews.map { |r| r.moviegoer.name } # => ['alice','bob']
+---------------------------------------
+NOTE: WATCH THIS..I HOPE IS USEFUL:
+http://www.youtube.com/watch?v=2k3-icd6SnM&feature=youtube_gdata
 
 
 
