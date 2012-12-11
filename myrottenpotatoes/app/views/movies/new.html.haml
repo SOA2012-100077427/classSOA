@@ -12,3 +12,11 @@
   = date_select :movie, :release_date
 
   = submit_tag 'Save Changes'
+
+-# new.html.haml using partial
+
+%h2 Create New Movie
+
+= form_tag '/movies', :method => :post do
+  = render :partial => 'movie_form'
+  = submit_tag 'Save Changes'
