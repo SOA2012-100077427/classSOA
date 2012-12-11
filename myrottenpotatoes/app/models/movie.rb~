@@ -1,9 +1,9 @@
-class Movie < ActiveRecord::Base # from chp 6.7 stubbing the internet
+class Movie < ActiveRecord::Base
 
   class Movie::InvalidKeyError < StandardError ; end
 
   def self.api_key
-    'cc4b67c52acb514bdf4931f7cedfd12b' # replace with YOUR Tmdb key 
+    'cc4b67c52acb514bdf4931f7cedfd12b' # replace with YOUR Tmdb key
   end
 
   def self.find_in_tmdb(string)
