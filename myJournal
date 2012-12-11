@@ -476,6 +476,952 @@ end
     end
 
 -----------------------------------
+*********************************
+***********PROBLEM FOUND*********
+After finishing this steps...when I run the localhost:3000/movies/new to "Add new movie" to my program.. It brings this error:
+Unknown action
+
+The action 'create' could not be found for MoviesController
+
+********************************
+*************SOLUTION******************
+forget to closs the class "end" in the movie_controller.rb
+i.e
+Class
+----
+end
+*****************************
+
+
+
+===============================================
+5.4 ------------>Running Cucumber and Capybara
+===============================================
+STEPS:
+1..  Like other useful tools we’ve seen, Cucumber is supplied as a Ruby gem, so the first thing we need to do is declare that our app depends on this gem and use Bundler to install it. Building on the myrottenpotatoes app you started in Chapter 3, add the following lines to Gemfile;
+URL: http://pastebin.com/MMZdRmB3
+
+ 
+Here is the code below:
+--------------------------------
+# add to end of Gemfile
+group :test, :development do
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'database_cleaner' # to clear Cucumber's test database between runs
+  gem 'capybara'         # lets Cucumber pretend to be a web browser
+  gem 'launchy'          # a useful debugging aid for user stories
+end---------------------------
+
+Our Gemfile, for now looks like the given code:
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ cat Gemfile
+---------------------------------------------
+source 'http://rubygems.org'
+
+gem 'rails', '3.1.0'
+#code below was pasted in
+# use Haml for templates
+gem 'haml'
+# use Ruby debugger
+group :development, :test do
+  gem 'ruby-debug19'
+end
+#
+
+# Bundle edge Rails instead:
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+
+gem 'sqlite3'
+
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+  gem 'therubyracer'
+end
+
+gem 'jquery-rails'
+
+# Use unicorn as the web server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
+# add to end of Gemfile---section 5.4
+group :test, :development do
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'database_cleaner' # to clear Cucumber's test database between runs
+  gem 'capybara'         # lets Cucumber pretend to be a web browser
+  gem 'launchy'          # a useful debugging aid for user stories
+end
+------------------------------------
+
+2... Run "bundle install --without production". If all goes well, you’ll eventually see “Your bundle is complete.”
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ bundle install --without production
+THANK GOD!!! all went perfectly well..:))
+
+3.. setting up the directories and “boilerplate” files that Cucumber and Capybara need.
+Like Rails itself, Cucumber comes with a generator that does this for you. In the app’s root directory, run the following two commands (if they ask whether it’s OK to overwrite certain files such as cucumber.rake, you can safely say yes):
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app$
+---------------
+rails generate cucumber:install capybara 
+rails generate cucumber_rails_training_wheels:install
+-------------------
+
+************************************
+********PROBLEM FOUND 001************
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app$ rails generate cucumber:install capybara
+WARNING: Cucumber-rails required outside of env.rb.  The rest of loading is being defered until env.rb is called.
+  To avoid this warning, move 'gem cucumber-rails' under only group :test in your Gemfile
+      create  config/cucumber.yml
+      create  script/cucumber
+       chmod  script/cucumber
+      create  features/step_definitions
+      create  features/support
+      create  features/support/env.rb
+       exist  lib/tasks
+      create  lib/tasks/cucumber.rake
+        gsub  config/database.yml
+        gsub  config/database.yml
+       force  config/database.yml
+*************************************
+
+**************************************
+*************PROBLEM FOUND 002********
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app$ rails generate cucumber_rails_training_wheels:install
+WARNING: Cucumber-rails required outside of env.rb.  The rest of loading is being defered until env.rb is called.
+  To avoid this warning, move 'gem cucumber-rails' under only group :test in your Gemfile
+       exist  features/step_definitions
+      create  features/step_definitions/web_steps.rb
+       exist  features/support
+      create  features/support/paths.rb
+      create  features/support/selectors.rb
+******************************************
+
+***********SOLUTION*********
+Feedback: THe error is commond and everything should work fine to continue :)
+****************************************
+
+"somehow, when I run it again and again, I found this result.. instead of create" "... it changes to identical " "..
+---------------PB 001-------------
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app$ rails generate cucumber:install capybara
+WARNING: Cucumber-rails required outside of env.rb.  The rest of loading is being defered until env.rb is called.
+  To avoid this warning, move 'gem cucumber-rails' under only group :test in your Gemfile
+   identical  config/cucumber.yml
+   identical  script/cucumber
+       chmod  script/cucumber
+       exist  features/step_definitions
+       exist  features/support
+   identical  features/support/env.rb
+       exist  lib/tasks
+   identical  lib/tasks/cucumber.rake
+------------------------------------------
+
+----------------------PB 002----------------------
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app$ rails generate cucumber_rails_training_wheels:install
+WARNING: Cucumber-rails required outside of env.rb.  The rest of loading is being defered until env.rb is called.
+  To avoid this warning, move 'gem cucumber-rails' under only group :test in your Gemfile
+       exist  features/step_definitions
+   identical  features/step_definitions/web_steps.rb
+       exist  features/support
+   identical  features/support/paths.rb
+   identical  features/support/selectors.rb
+----------------------------------------------------
+NOTE:
+*************OBSERVED****************************
+Another thing I observed was that web_steps.rb was not  in the directory "myrottenpotatoes/features/step_definitions/web_steps.rb." after the first running.... It just appeared after the above features (the second run).
+*****************************************************
+
+ 
+
+4... The Cucumber generator gives you commonly used step definitions as a starting point, such as interactions with a web browser. For this app, you will find them in myrottenpotatoes/features/step_definitions/web_steps.rb. In addition to these predefined steps, you’ll need to create new step definition to match the unique functionality of your app.
+Before trying to run Cucumber, there’s one more step we must take:
+you must initialize the test database by running "rake db:test:prepare".
+NOTE: You need to do this before the first time you run tests or whenever the database schema is changed.
+
+ 
+After, I run the rake db:test:prepare, the following error comes up.
+*****************************************************
+***************PROBLEM FOUND*************************
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ rake db:test:prepare
+WARNING: Cucumber-rails required outside of env.rb.  The rest of loading is being defered until env.rb is called.
+    To avoid this warning, move 'gem cucumber-rails' under only group :test in your Gemfile
+********************************************************
+
+**************************************
+************SOLUTION******************
+I changed----> gem 'cucumber-rails'
+               to
+gem 'cucumber-rails', :require => false
+                  in the Gemfile..
+suprinsly, it works...
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ rake db:test:prepare
+********************************************
+
+5...At this point you’re ready to start using Cucumber. You add the features themselves in the features directory as files with a .feature file extension. Copy the user story in Figure 5.2 and paste it into a file called AddMovie.feature in the directory features.
+
+URL: http://pastebin.com/mqQncg1s
+
+Here is the code:
+saasbook@saasbook:~/classSOA/myrottenpotatoes/features$ cat AddMovie.feature
+----------------------------------------
+Feature: User can manually add movie
+ 
+Scenario: Add a movie
+  Given I am on the RottenPotatoes home page
+  When I follow "Add new movie"
+  Then I should be on the Create New Movie page
+  When I fill in "Title" with "Men In Black"
+  And I select "PG-13" from "Rating"
+  And I press "Save Changes"
+  Then I should be on the RottenPotatoes home page
+  And I should see "Men In Black"
+--------------------------------------------
+******^^^^^^^^^^^^^^^^^^^^^^^
+NOTE: WATCH the following screencast-- really helpful
+Screencast 5.4.1: Cucumber Part I The screencast shows how Cucumber checks to see whether the tests work by coloring the step definitions.
+Failing steps are red, unimplemented steps are yellow, and passing steps are green.
+URL: http://vimeo.com/34754747
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+******^^^^^^^^^^^^^^^^^^^^^^^
+
+--------------------
+
+********************************************
+************PROBLEM FOUND*****************
+After doing the above step; When I run cucumber, the error below pops up...:
+aasbook@saasbook:~/classSOA/myrottenpotatoes$ cucumber
+Using the default profile...
+You have already activated rack 1.4.1, but your Gemfile requires rack 1.3.6. Using bundle exec may solve this. (Gem::LoadError)
+***********************************
+
+*********************************
+******SOLUTION*********************
+I then have to run "bundle exec cucumber" for it to work...
+
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ bundle exec cucumber
+Using the default profile...
+Feature: User can manually add movie
+Scenario: Add a movie    
+- - -
+Yeaaaaaah! it works.. ((:::~~
+*********************************
+*********************************
+
+NB::001
+The first step on line 4 is red, so Cucumber skips the rest. It fails because there is no path in paths.rb that matches “the Rotten Potatoes home page”, as the Cucumber error message explains.
+Error:
+ Can't find mapping from "the RottenPotatoes home page" to a path.
+SUGGESTION:
+ Now, go and add a mapping in /home/saasbook/classSOA/myrottenpotatoes/features/support/paths.rb (RuntimeError)
+-----------
+def path_to(page_name)
+    case page_name
+
+    when /^the home\s?page$/
+      '/'
+    when /^the RottenPotatoes home page/
+      '/movies'
+-----------------
+-then run "rake routes" to find out what's the name need in the index function. which is "/movies".. we copied and paste it in above code
+-save it and run "cucumber" OR "bundle exec cucumber" again.
+
+
+NB::002
+This new path turns this first step as green as a cucumber, but now the third step on line 6 is red. As error message explains, it fails because no path matches “Create New Movie page”, and we fix it again by adding the path to paths.rb.
+Error:
+ Can't find mapping from "the Create New Movie page" to a path.
+SUGGESTION:
+Now, go and add a mapping in /home/saasbook/classSOA/myrottenpotatoes/features/support/paths.rb (RuntimeError)
+--------------------
+def path_to(page_name)
+    case page_name
+
+    when /^the home\s?page$/
+      '/'
+    when /^the RottenPotatoes home page/
+      '/movies'
+    when /^the Create New Movie page/
+      '/movies/new'
+------------------
+-then run "rake routes" again to see what name is in the new action. which is "/movies/new". we copied and paste it in above code.
+-save it and run "cucumber" OR "bundle exec cucumber" again.
+
+
+
+***************PROBLEM FOUND******
+the following error happen when i run cucumber... basically it won't allow me to save my movies on the browser last week...
+This happend after running  NB::002
+Error: The action 'create' could not be found for MoviesController (AbstractController::ActionNotFound)
+******************
+
+*********SOLUTION****
+I missed the following code in my create function on saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat movies_controller.rb
+---------
+flash[:notice] = "#{@movie.title} was successfully created."
+----------
+def create
+      @movie = Movie.create!(params[:movie])
+      flash[:notice] = "#{@movie.title} was successfully created."
+      redirect_to movies_path
+    end
+--------
+Also, i miss the clossing "end" in the class of movie_controller.rb
+*************************
+
+-save it and run "cucumber" OR "bundle exec cucumber" again
+
+^^^^^Yeaaaaaaah^^^^! 
+All steps now are as cool as a cucumber, and the AddMovie scenario passes.all turns to green.
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+==============================================
+5.5 ------>Lo-Fi User Interface Sketches and Storyboards 
+==============================================
+NOthing to do in this section... just to read and know the concept
+
+=======================================
+5.6 ---->Enhancing Rotten Potatoes
+=======================================
+STEPS:
+
+1.. Figure 5.6 shows the sad path scenario for the new feature; create a file features/search_tmdb.feature containing this code. When we run the feature with cucumber features/search_tmdb.feature, the second step Then I should see “Search TMDb for a movie” should fail (red), because we haven’t yet added this text to the home page app/views/movies/index.html.haml. So our first task is to get this step to go green by making that change.
+URL: http://pastebin.com/Qc4rppVL
+
+the code is given below:
+saasbook@saasbook:~/classSOA/myrottenpotatoes/features$ cat search_tmdb.feature
+---------------------------
+Feature: User can add movie by searching for it in The Movie Database (TMDb)
+
+  As a movie fan
+  So that I can add new movies without manual tedium
+  I want to add movies by looking up their details in TMDb
+
+Scenario: Try to add nonexistent movie (sad path)
+
+  Given I am on the RottenPotatoes home page
+  Then I should see "Search TMDb for a movie"
+  When I fill in "Search Terms" with "Movie That Does Not Exist"
+  And I press "Search TMDb"
+  Then I should be on the RottenPotatoes home page
+  And I should see "'Movie That Does Not Exist' was not found in TMDb."
+---------------------
+
+2.. So in the interest of efficiency, modify index.html.haml by adding the lines in Figure 5.7, which we now explain.
+URL: http://pastebin.com/viZTPxGN
+
+the code is given below as :
+------------------------------
+-# add to end of app/views/movies/index.html.haml:
+ 
+%h1 Search TMDb for a movie
+ 
+= form_tag :action => 'search_tmdb' do
+ 
+  %label{:for => 'search_terms'} Search Terms
+  = text_field_tag 'search_terms'
+  = submit_tag 'Search TMDb'
+------------------------------
+
+3..Doing it over and over? rake cucumber runs all your features, or more precisely, those selected by the default profile in Cucumber’s configuration file cucumber.yml.
+this is what happen when i run rake cucumber:-
+-----------------------------------------------
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ rake bundle exec cucumber features/search_tmdb.feature
+rake aborted!
+Don't know how to build task 'bundle'
+
+(See full trace by running task with --trace)
+----------------------------------------------------
+
+Again, this happens:-
+-------------------------------
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ task with --trace
+[task next with --trace]
+No matches.
+-------------------------------
+
+4..At this point, re-running cucumber features/search_tmdb.feature should show the first three steps passing, but the fourth step And I press “Search TMDb” will fail.
+
+After running cucumber again, this happen:_
+------------------------------------
+saasbook@saasbook:~/classSOA/myrottenpotatoes$ rake bundle exec cucumber features/search_tmdb.feature
+
+Failing Scenarios:
+cucumber features/search_tmdb.feature:7 # Scenario: Try to add nonexistent movie (sad path)
+
+1 scenario (1 failed)
+6 steps (1 failed, 5 skipped)
+-------------------------------------
+NB: Instead of 3 Passes as stated, nothing passes atall..
+
+
+5...we have to make sure there is a route to this controller action. The bottom part of the Figure 5.8 shows the line you must add to config/routes.rb to add a form submission (POST) route to that action.
+URL: http://pastebin.com/tCHwFER8
+
+the code is given below:
+------------------------
+# add to routes.rb, just before or just after 'resources :movies' :
+
+# Route that posts 'Search TMDb' form
+post '/movies/search_tmdb'
+
+-------------------------------------- 
+Now, our routes.rb looks like the code below
+saasbook@saasbook:~/classSOA/myrottenpotatoes/config$ cat routes.rb
+-----------------------------------------
+Myrottenpotatoes::Application.routes.draw do
+# add to routes.rb, just before or just after 'resources :movies' :
+
+# Route that posts 'Search TMDb' form
+post '/movies/search_tmdb'
+  resources :movies
+    root :to => redirect('/movies')
+    end
+-----------------------------------------
+
+ 
+6.. Since this is the “sad path” scenario where no movies are found, we will temporarily create a controller method that always behaves as if nothing was found, so we can finish testing the sad path. Also, The top part of Figure 5.8 shows the code you should add to app/controllers/movies_controller.rb to create the “fake” hardwired search_tmdb action.
+
+URL:http://pastebin.com/yVNvBKNe
+
+The code is given below:-
+saasbook@saasbook:~/classSOA/myrottenpotatoes/app/controllers$ cat movies_controller.rb
+----------------------------------
+# add to movies_controller.rb, anywhere inside
+#  'class MoviesController < ApplicationController':
+
+def search_tmdb
+  # hardwire to simulate failure
+  flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
+  redirect_to movies_path
+end
+
+----------------------------------
+ 
+NOTE: you. Why would we deliberately create a fake controller method that doesn’t actually call TMDb, but just pretends the search failed? In this case, the answer is that it lets us finish the rest of the scenario, making sure that our HTML views match the Lo-Fi sketches and that the sequence of views matches the storyboards. Indeed, once you make the changes in Figure 5.8, the entire sad path should pass.
+
+*******^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Screencast 5.6.1: Cucumber Part II 
+In this screencast, we do a sad path to illustrate features of Cucumber because it is able to use existing code.
+*******^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^Yeaaaaaaah^^^^! 
+Again!!All steps now are as cool as a cucumber, and the AddMovie scenario passes.all turns to green.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**********HAPPY PATH***************
+7... Figure 5.9 shows the answer. Modify features/search_tmdb.feature to match the figure and once again run cucumber features/search_tmdb.feature.
+
+URL: http://pastebin.com/saRTPLnM
+the description is given below:
+saasbook@saasbook:~/classSOA/myrottenpotatoes/features$ cat search_tmdb.feature
+
+---------------------------------------------
+Feature: User can add movie by searching for it in The Movie Database (TMDb)
+ 
+  As a movie fan
+  So that I can add new movies without manual tedium
+  I want to add movies by looking up their details in TMDb
+ 
+Background: Start from the Search form on the home page
+ 
+  Given I am on the RottenPotatoes home page
+  Then I should see "Search TMDb for a movie"
+ 
+Scenario: Try to add nonexistent movie (sad path)
+ 
+  When I fill in "Search Terms" with "Movie That Does Not Exist"
+  And I press "Search TMDb"
+  Then I should be on the RottenPotatoes home page
+  And I should see "'Movie That Does Not Exist' was not found in TMDb."
+ 
+Scenario: Try to add existing movie (happy path)
+ 
+  When I fill in "Search Terms" with "Inception"
+  And I press "Search TMDb"
+  Then I should be on the "Search Results" page
+  And I should not see "not found"
+  And I should see "Inception"
+---------------------------------------------
+NOTE: Unsurprisingly, the step at line 24 will fail, because we have hardwired the controller method to pretend there is never a match in TMDb.
+
+======================================
+5.7----> Explicit vs. Implicit and Imperative vs. Declarative Scenarios
+======================================
+STEPS:
+1.. Figure 5.10: Adding this code to movie_steps.rb creates new step definitions matching lines 5 and 6 of the declarative scenario by reusing your existing steps.
+
+URL: http://pastebin.com/rky95ycT
+
+saasbook@saasbook:~/classSOA/myrottenpotatoes/features/step_definitions$ cat movie_steps.rb
+-----------------------
+Given /I have added "(.*)" with rating "(.*)"/ do |title, rating|
+  steps %Q{
+    Given I am on the Create New Movie page
+    When  I fill in "Title" with "#{title}"
+    And   I select "#{rating}" from "Rating"
+    And   I press "Save Changes"
+  }
+end
+
+Then /I should see "(.*)" before "(.*)" on (.*)/ do |string1, string2, path|
+  step "I am on #{path}"
+  regexp = /#{string1}.*#{string2}/m #  /m means match across newlines
+  page.body.should =~ regexp
+end
+-----------------------------
+
+
+
+****************
+CHAPTER 6. Software Verification and Testing: Test-Driven Development
+****************
+NB: this CHP, we were ask to do only 6.1... NO rspec stuff
+===============================================
+6.1------>Background: A RESTful API and a Ruby Gem
+================================================
+NB: we got to ONLY the screen cast here...
+STEPS:
+1.... Screencast 6.1.1: Using the TMDb API TMDb’s API is accessed by constructing a RESTful URI for the appropriate function, such as “search for movies by title” or “retrieve detailed information about a specific movie”. To prevent abuse and track each user of the API separately, each developer must first obtain their own API key by requesting one via the TMDb website. Request URI’s that do not include a valid API key are not honored, returning an error instead. For request URI’s containing a valid API key, TMDb returns an XML document containing the result of the request encoded by the URI. This flow—construct a RESTful URI that includes an API key, receive an XML response—is a common pattern for interacting with external services.
+URL: http://vimeo.com/34754806
+
+NOTE 1: api.themoviedb.org -----> Net::HTTP class to issue the request
+NOTE 2: cc4b67c52acb514bdf4931f7cedfd12b --->APIKEY
+
+
+2.... Screencast 6.1.2: Simplified use of the TMDb API with the ruby-tmdb gem Not every RESTful API has a corresponding Ruby library, but for those that do, such as TMDb, the library can hide the API details behind a few simple Ruby methods. The ruby-tmdb gem, which we installed via the Gemfile and Bundler as we learned in Chapter 3, manages URI construction and parses the XML result into Ruby objects such as hashes, strings, dates, and so on.
+
+
+
+URL: http://vimeo.com/34754837
+FOLLOW: http://api.themoviedb.org
+	Then to Wrappers & Libraries ---> then to Ruby(AR style) link
+STEPS:
+	a) swithc to ruby terminal in the Terminal window by typing irb
+	b) run the following two codes : 
+		require 'rubygems'  -----------> result equals false
+		require 'ruby-tmdb'  ----------> result equals true
+	c) then run Tmdb.api_key='cc4b67c52acb514bdf4931f7cedfd12b'
+	d) search a movie by running   movies=TmdbMovie.find(:title => "Hardware") for example
+	e) we then run movies.length since multiple movies might have match
+	f) we can ask the first movie by running movies[0]
+	g) we can ask the name of the first movie by running movies[0].name
+	h) the certification of the first movie by running movies[0].certification
+	i) the rating of the first movie by running movies[0].rating
+
+NOTE:
+	j) we can also find movies by id:	
+		irb(main):031:0* TmdbMovie.find(:id => 11309)
+	k) the name of the movie
+		irb(main):032:0* TmdbMovie.find(:id => 11309)name
+
+
+NOTE: WHAT IF SOMETHING GOES WRONG: DIFFERENT KIND OF "EXCEPTIONS"
+	Suppose, we type 
+	i) Tmdb.api_key="INVALID"
+	ii) then run TmdbMovie.find(:id => 11309).name
+		ERROR: we get RuntimeError: Tmdb API returned status code '404' for URL:'http://api.themoviedb.org/2.1/Movie.getInfo/en/json/INVALID/11309'
+Explanation: this is because we don't set any valid name for the movie
+
+ 	Suppose, we dont set any APYKEY atall...leaving it uninitialise
+	i) Tmdb.api_key=NIL
+	ii) then run TmdbMovie.find(:id => 11309).name
+		ERROR: we get ArgumentError: Tmdb.api_key must be set before using the API
+
+Explanation: this is because we leave the id blank
+
+
+
+
+
+===================================================
+6.2------------>FIRST, TDD, and Getting Started With RSpec
+===================================================
+STEPS:
+1.. Before creating this file, you need to set up RottenPotatoes to use RSpec for testing, which requires three steps: 
+    a) In the group :test block in the Gemfile, add gem ’rspec-rails’
+    b) As always when modifying the Gemfile, run bundle install --without production 
+    c) In the app root directory of Rotten Potatoes, run rails generate rspec:install to set up the files and directories RSpec needs.
+
+
+2.. You’re now ready to create the file spec/controllers/movies_controller_spec.rb as shown in Figure 6.2.
+  URL: http://pastebin.com/Kyie9NhS
+  the code is given below:
+/classSOA/myrottenpotatoes/spec/controllers$ cat movies_controller_spec.rb 
+--------------------------------------
+require 'spec_helper'
+
+describe MoviesController do
+  describe 'searching TMDb' do
+    it 'should call the model method that performs TMDb search'
+    it 'should select the Search Results template for rendering'
+    it 'should make the TMDb search results available to that template'
+  end
+end
+---------------------------------------
+
+***^^^^^^^^^^^^^^^^^^
+NOTE:: Screencast 6.2.1: Executing the empty test skeletons and automating execution with autotest
+  NB: ruby-debug and autotest To use the interactive debugger introduced in  Chapter 3 with autotest, add require ’ruby-debug’ to spec/spec_helper.rb and insert debugger calls wherever you want the action to stop.
+THIS IS VERY HELPFUL... WATCH IT!! :))
+  steps:
+   a) add gem 'ZenTest' to Gemfile
+   b) run bundle install --without production
+   c) run rspec -c -fn spec/controllers/movies_controller_spec.rb
+
+      OBSERVATION: all turns to "yellow" cuz they not yet implemented
+  d) to see why is pending we write do code in the first block or scenario in spec/controllers/movies_controller_spec.rb
+	do
+	pending 'need to choose name for model method'
+	end
+   e) when we run rspec again, we see exactly why is pending...
+   f) we now run autotest
+	AUTOTEST: monitor as we make chang either our text or source code.it 		will automatically notice those changes and rerun any test that might 		be affected.
+   g) we make some changes in our second scenario to see some red lines
+	do
+	flunk 'No template exist yet'
+	end
+***^^^^^^^^^^^^^^^^^^^^^
+
+=============================================
+6.3-------->The TDD Cycle: Red–Green–Refactor
+=============================================
+STEPS::
+1.. We can now write the first line of our first spec, as Figure 6.4 shows. where we modify the first scenario.
+ URL: http://pastebin.com/cd4pVa0a
+the code is given below:
+/classSOA/myrottenpotatoes/spec/controllers$ cat movies_controller_spec.rb
+-------------------------
+require 'spec_helper'
+
+describe MoviesController do
+  describe 'searching TMDb' do
+    it 'should call the model method that performs TMDb search' do
+      post :search_tmdb, {:search_terms => 'hardware'}
+    end
+    it 'should select the Search Results template for rendering'
+    it 'should make the TMDb search results available to that template'
+  end
+end
+---------------------------
+
+****^^^^^^^^^^^^^^^^^^
+NOTE:Screencast 6.3.1:
+ Developing the first example requires adding an empty controller method and creating an empty view 
+To get past RSpec’s errors, we first have to create an empty controller method and its corresponding route, so that the action (form submission by the user) would have somewhere to go. Then we need to create an empty view so that the controller action has something to render. That one line of test code drove us to ensure that our new controller method and the view it will ultimately render have the correct names and have a matching route.
+	STEPS:
+	a) put the do block in the first scenario
+	b) run rspec spec/controllers/movies_controller_spec.rb
+	c) 
+*****^^^^^^^^^^^^^^^^
+
+
+NB: I did the 6.2 adn 6.3 without knowing that we had to skip the TDD and rspec for now...
+so, here I go all the way to chapter 7......... ))))))))(((((:::::
+
+
+2... NB: this is added to search function in movie_controller.rb
+	
+  @movies = Movie.find_in_tmdb(params[:search_terms]) #chp 6.3  
+
+	NOTE: comment the code on top and paste this one.
+
+
+PROBLEM*************> CANNOT FIND THE MOVIES IN THE "search TMDb" in the browser... when you search a particular movie, it runs and nothing happen.
+
+***********
+7. Improving Productivity: DRY and Concise Rails
+************
+
+
+============================================
+7.1 ------->DRYing Out MVC: Partials, Validations and Filters
+============================================
+STEPS:
+1..  Figure 7.1 captures this common view code in a partial and shows how to modify the existing new.html.haml and edit.html.haml to use it.
+
+	a) URL: http://pastebin.com/G1c32mQW
+
+the code is given below:
+/myrottenpotatoes/app/views/movies$ 
+-----------------------------------
+-# in _movie_form.html.haml (the partial)
+
+= label :movie, :title, 'Title'
+= text_field :movie, 'title', @movie.title  # delete code ", @movie.title " if the code doesn't work
+		
+= label :movie, :rating, 'Rating'
+= select :movie, :rating, ['G','PG','PG-13','R','NC-17'], @movie.rating # delete code ", @movie.rating"
+
+= label :movie, :release_date, 'Released On'
+= date_select :movie, :release_date, @movie.release_date   # delete code ", @movie.release_date"
+-----------------------------------
+
+	b) URL: http://pastebin.com/ZNKAws0T
+
+the code is given below:
+/myrottenpotatoes/app/views/movies$ 
+--------------------------------------
+-# new.html.haml using partial
+
+%h2 Create New Movie
+
+= form_tag '/movies', :method => :post do
+  = render :partial => 'movie_form'
+  = submit_tag 'Save Changes'
+--------------------------------------
+
+	c) URL:http://pastebin.com/pRWLLbNk
+
+the code is given below:
+/myrottenpotatoes/app/views/movies$ 
+-----------------------------------------
+-# edit.html.haml using partial
+
+%h2 Edit Existing Movie
+
+= form_tag movie_path(@movie), :method => :put do
+  = render :partial => 'movie_form'
+  = submit_tag 'Update Movie Info'
+------------------------------------------
+
+
+2...
+
+
+
+
+3.... the DRY philosophy urges us to centralize them in one place. Rails provides two analogous facilities for doing this: validations for models and filters for controllers.
+
+We modify   app/models/movie.rb by pasting the following code into it.
+
+URL: http://pastebin.com/2GtWshSb
+the code is given below:
+myrottenpotatoes/app/models$ cat movie.rb
+---------------------------------------
+class Movie < ActiveRecord::Base
+  RATINGS = %w[G PG PG-13 R NC-17]  #  %w[] shortcut for array of strings
+  validates :title, :presence => true
+  validates :release_date, :presence => true
+  validate :released_1930_or_later # uses custom validator below
+  validates :rating, :inclusion => {:in => RATINGS}, :unless => :grandfathered?  # delete the code or line ", :unless => :grandfathered?"
+  def released_1930_or_later
+    errors.add(:release_date, 'must be 1930 or later') if
+      self.release_date < Date.parse('1 Jan 1930')
+  end
+  def grandfathered? ; self.release_date >= @@grandfathered_date ; end # delete this entire line
+    
+end
+# try in console:
+m = Movie.new(:title => '', :rating => 'RG', :release_date => '1929-01-01')
+# force validation checks to be performed:
+m.valid?  # => false
+m.errors[:title] # => ["can't be blank"]
+m.errors[:rating] # => ["is not included in the list"]
+m.errors[:release_date] # => ["must be 1930 or later"]
+m.errors.full_messages # => ["Title can't be blank", "Rating is not included in the list", "Release date must be 1930 or later"]
+
+---------------------------------------
+
+
+4... Figure 7.4 shows how to modify our controller methods to be more idiomatic by taking advantage of this. Modify your create and update controller actions to match the figure,
+
+URL: http://pastebin.com/CM6ntZzK
+
+the code is given below:
+myrottenpotatoes/app/controllers$ cat movies_controller.rb
+------------------------------------
+# replaces the create method in controller:
+def create
+  @movie = Movie.new(params[:movie])
+  if @movie.save
+    flash[:notice] = "#{@movie.title} was successfully created."
+    redirect_to movies_path
+  else
+    render 'new' # note, 'new' template can access @movie's field values!
+  end
+end
+# replaces the update method in controller:
+def update
+  @movie = Movie.find params[:id]
+  if @movie.update_attributes(params[:movie])
+    flash[:notice] = "#{@movie.title} was successfully updated."
+    redirect_to movie_path(@movie)
+  else
+    render 'edit' # note, 'edit' template can access @movie's field values!
+  end
+end
+------------------------------------
+
+
+5....Of course, it would be nice to provide the user an informative message specifying what went wrong and what she should do. This is easy: within a view we can get the name of the controller action that called for the view to be rendered, so we can include it in the error message, as line 5 of the following code shows.
+URL: http://pastebin.com/YGqvV8pg
+
+the code is given below:
+myrottenpotatoes/app/views/movies$ cat _movie_form.html.haml
+------------------------------------
+-# insert at top of _movie_form.html.haml
+
+- unless @movie.errors.empty?
+  #warning
+    Errors prevented this movie from being #{controller.action_name}d:
+    %ul
+      - @movie.errors.full_messages.each do |error|
+        %li= error
+-------------------------------------
+
+*******^^^^^^^^^^^^^
+IMPORTANT TO WATCH..
+NOTE: Screencast 7.1.1: 
+How model validations interact with controllers and views The form helpers in our views use the errors object to discover which fields caused validation errors and apply the special CSS class field-with-errors to any such fields. By including selectors for that class in app/assets/stylesheets/application.css, we can visually highlight the affected fields for the user’s benefit.
+URL: http://vimeo.com/34754932
+*******^^^^^^^^^^^^^
+
+6..
+
+
+
+7..  Figure 7.7: 
+# It seems that is not really necessary to do this step, so donot paste the code for now.
+	URL: http://pastebin.com/MHuGdTUT
+myrottenpotatoes/app/controllers$ cat application_controller.rb
+------------------------------------------
+class ApplicationController < ActionController::Base
+  before_filter :set_current_user
+  protected # prevents method from being invoked by a route
+  def set_current_user
+    # we exploit the fact that find_by_id(nil) returns nil
+    @current_user ||= Moviegoer.find_by_id(session[:user_id])
+    redirect_to login_path and return unless @current_user
+  end
+end
+------------------------------------------
+ 
+
+	****personal reference for chp 7.1 to work-- some bugs identified*****
+	 a) I delete the below code in line 4, 7 and 10 of _movie_form.html.haml respectively.
+		", @movie.title"
+	 	", @movie.rating"
+		", @movie.release_date"
+	 b) I entirely remove/delete the below lines of code in movie.rb in step 3
+	", :unless => :grandfathered?"
+	"def grandfathered? ; self.release_date >= @@grandfathered_date ;"
+	 c) I comment the below line of code search_tmdb in movie_controller.rb
+	 # @movies = Movie.find_in_tmdb(params[:search_terms]) #chp 6.3  
+	 d) I comment the line of code in application_controller.rb in stp 7
+	#redirect_to login_path and return unless @current_user
+	 e) I entirely undo step 5 of chp 7.1
+
+
+
+
+
+
+
+
+==================================================
+7.2------> Single Sign-On and Third-Party Authentication
+==================================================
+STEPS:
+
+1..  Happily, adding third-party authentication to Rails apps is straightforward. Of course, before we can enable a user to log in, we need to be able to represent users! So before continuing, we create a basic model and migration following the instructions in Figure 7.9.
+	INSTRUCTIONS:
+	Figure 7.9: Top (a): Type this command in a terminal to create a 	moviegoers model and migration, and run rake db:migrate to apply the 	migration. Bottom (b): Then edit the generated app/models/moviegoer.rb 	file to match this code, which the text explains.
+
+(a) URL: http://pastebin.com/UXQZiBY0
+---------------------------------
+rails generate model Moviegoer name:string provider:string uid:string
+---------------------------------
+
+
+(b) URL: http://pastebin.com/LyD2qxRA
+---------------------------------------
+# Edit app/models/moviegoer.rb to look like this:
+class Moviegoer < ActiveRecord::Base
+  include ActiveModel::MassAssignmentSecurity
+  attr_protected :uid, :provider, :name # see text for explanation
+  def self.create_with_omniauth(auth)
+    Moviegoer.create!(
+      :provider => auth["provider"],
+      :uid => auth["uid"],
+      :name => auth["info"]["name"])
+  end
+end
+---------------------------------------
+
+
+2... We will use Twitter as an example, so add gem omniauth-twitter to your Gemfile and run bundle install --without production as usual.
+
+NOTE: we were ask to skip this chp 7.2 for some reason.. so we now move all the way to next chp....
+
+
+
+
+
+
+
+===============================================
+7.3-----------> 7.3 Associations and Foreign Keys
+===============================================
+STEPS:
+
+1. Rails’ ActiveRecord::Associations module supports exactly this design, as we’ll learn by doing. Apply the code changes in Figure 7.14 as directed in the caption, and you should then be able to start rails console and successfully execute the examples in Figure 7.13.
+
+	a) Figure 7.14: Top (a): Create and apply this migration to create the Reviews table. The new model’s foreign keys are related to the existing movies and moviegoers tables by convention over configuration. 
+
+URL: http://pastebin.com/Ch2FTEzA
+the code is given below
+myrottenpotatoes/db/migrate$ cat _create_reviews.rb
+---------------------------------------
+# Run 'rails generate migration create_reviews' and then
+#   edit db/migrate/*_create_reviews.rb to look like this:
+class CreateReviews < ActiveRecord::Migration
+  def up
+    create_table 'reviews' do |t|
+      t.integer    'potatoes'
+      t.text       'comments'
+      t.references 'moviegoers'
+      t.references 'movies'
+    end
+  end
+  def down ; drop_table 'reviews' ; end
+end
+---------------------------------------
+
+	b) Figure 7.14: Middle (b) Put this new Review model in app/models/review.rb. Bottom
+
+URL: http://pastebin.com/GBTCH47f
+the code is given below:
+myrottenpotatoes/app/models$ cat review.rb
+------------------------------------
+class Review < ActiveRecord::Base
+  belongs_to :movie
+  belongs_to :moviegoer
+  attr_protected :moviegoer_id # see text
+end
+------------------------------------
+
+	c) Bottom (c): Make this one-line change to each of the existing files movie.rb and moviegoer.rb.
+the code is given below:
+/myrottenpotatoes/app/models$ cat movie.rb
+/myrottenpotatoes/app/models$ cat moviegoer.rb
+------------------------------------
+# place a copy of the following line anywhere inside the Movie class
+#  AND inside the Moviegoer class (idiomatically, it should go right
+#  after 'class Movie' or 'class Moviegoer'):
+  has_many :reviews
+------------------------------------
+
+
+2.
 
 
 
@@ -487,7 +1433,17 @@ end
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
