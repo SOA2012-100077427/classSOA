@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  class: MyString
+  grade: MyString
+  seatnumber: MyString
+  group: MyString
+  job: MyString
+  pettype: MyString
+  food: MyString
+  petnumber: MyString
+
+two:
+  name: MyString
+  class: MyString
+  grade: MyString
+  seatnumber: MyString
+  group: MyString
+  job: MyString
+  pettype: MyString
+  food: MyString
+  petnumber: MyString
