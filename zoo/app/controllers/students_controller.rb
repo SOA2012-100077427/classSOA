@@ -1,0 +1,6 @@
+class StudentsController < ApplicationController
+def index
+    @message = "Hello, WELCOME to our Happy Kids School!"
+   # @students = Studentdata.all
+  end
+end
