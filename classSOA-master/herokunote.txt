@@ -1,0 +1,1000 @@
+ 1030  ls
+ 1031  vi show.html.haml 
+ 1032  cd .
+ 1033  cd ..
+ 1034  cd controllers/
+ 1035  ls
+ 1036  vi movies_controller.rb 
+ 1037  cd ..
+ 1038  ls
+ 1039  cd views/
+ 1040  ls
+ 1041  cd movies/
+ 1042  ls
+ 1043  vi index.html.haml
+ 1044  ls
+ 1045  vi new.html.haml 
+ 1046  ls
+ 1047  vi show.html.haml 
+ 1048  cd ..
+ 1049  cd controllers/
+ 1050  ls
+ 1051  vi movies_controller.rb 
+ 1052  cd ..
+ 1053  cd..
+ 1054  ls
+ 1055  cd ..
+ 1056  ls
+ 1057  cd ..
+ 1058  ls
+ 1059  git init
+ 1060  git add classSOA
+ 1061  git commit -m "4-7"
+ 1062  git push -u https://github.com/SOA2012-101078506/classSOA.git
+ 1063  ls
+ 1064  cd c
+ 1065  cd classSOA/
+ 1066  ls
+ 1067  cd ..
+ 1068  cd myrottenpotatoes/
+ 1069  ls
+ 1070  cd ..
+ 1071  ls
+ 1072  cd classSOA/
+ 1073  ls
+ 1074  git init
+ 1075  git add myrottenpotatoes
+ 1076  git commit -m "4-7"
+ 1077  git push -u https://github.com/SOA2012-101078506/classSOA.git
+ 1078  SOA2012-101078506
+ 1079  git push -u https://github.com/SOA2012-101078506/classSOA.git
+ 1080  cd ..
+ 1081  ls
+ 1082  cd myrottenpotatoes/
+ 1083  ls
+ 1084  cd ap
+ 1085  cd app
+ 1086  ls
+ 1087  cd controllers/
+ 1088  ls
+ 1089  cd ..
+ 1090  ls
+ 1091  rm myrottenpotatoes/
+ 1092  ls
+ 1093  sudo rm myrottenpotatoes/
+ 1094  ls
+ 1095  sudo rm -r myrottenpotatoes/
+ 1096  ls
+ 1097  cd classSOA
+ 1098  ls
+ 1099  wget https://dl.dropbox.com/u/46030305/ruby%20note.txt
+ 1100  ls
+ 1101  rm -r ruby note.txt
+ 1102  ls
+ 1103  sudo rm -r ruby note.txt
+ 1104  ls
+ 1105  sudo rm -r ruby note.txt
+ 1106  git init
+ 1107  git add ruby note.txt
+ 1108  sudo rm -r ruby note.txt
+ 1109  wget https://dl.dropbox.com/u/46030305/rubynote.txt
+ 1110  ls
+ 1111  git init
+ 1112  git add rubynote.txt
+ 1113  git commit -m "note"
+ 1114  git push -u https://github.com/SOA2012-101078506/classSOA.git
+ 1115  ls
+ 1116  cd ..
+ 1117  ls
+ 1118  sudo gem install tjngram
+ 1119  sudo gem install TJNgram
+ 1120  sudo gem install TJNGram
+ 1121  ls
+ 1122  cd ..
+ 1123  ls
+ 1124  pwd
+ 1125  cd home
+ 1126  ls
+ 1127  vi ex1.rb
+ 1128  ls
+ 1129  ruby ex1.rb
+ 1130  vi ex1.rb
+ 1131  ruby ex1.rb
+ 1132  vi ex1.rb
+ 1133  ruby ex1.rb
+ 1134  vi ex1.rb
+ 1135  ruby ex1.rb
+ 1136  vi ex1.rb
+ 1137  ruby ex1.rb
+ 1138  vi ex1.rb
+ 1139  ruby ex1.rb
+ 1140  vi ex1.rb
+ 1141  ruby ex1.rb
+ 1142  vi ex1.rb
+ 1143  ruby ex1.rb
+ 1144  vi ex1.rb
+ 1145  ruby ex1.rb
+ 1146  vi ex1.rb
+ 1147  ruby ex1.rb
+ 1148  vi ex1.rb
+ 1149  ruby ex1.rb
+ 1150  vi ex1.rb
+ 1151  ruby ex1.rb
+ 1152  vi ex1.rb
+ 1153  ruby ex1.rb
+ 1154  ls
+ 1155  cd d
+ 1156  cd 
+ 1157  ls
+ 1158  cd Documents/
+ 1159  ls
+ 1160  cd classSOA/
+ 1161  ls
+ 1162  cd myrottenpotatoes/
+ 1163  ls
+ 1164  cd app/
+ 1165  cd views/movies/
+ 1166  ls
+ 1167  cd ..
+ 1168  ls
+ 1169  cd ..
+ 1170  ls
+ 1171  cd controllers/
+ 1172  ls
+ 1173  vi movies_controller.rb 
+ 1174  ls
+ 1175  cd Documents/
+ 1176  ls
+ 1177  cd classSOA/
+ 1178  ls
+ 1179  cd myrottenpotatoes/
+ 1180  ls
+ 1181  cd app/views/layouts/
+ 1182  ls
+ 1183  vi application.html.haml 
+ 1184  ls
+ 1185  cd rottenpotatoes/
+ 1186  ld
+ 1187  ls
+ 1188  cd
+ 1189  ld
+ 1190  ls
+ 1191  cd Documents/
+ 1192  ld
+ 1193  ls
+ 1194  cd classSOA/
+ 1195  ls
+ 1196  vi aboutme.txt 
+ 1197  cd 
+ 1198  ls
+ 1199  sudo rm -r rottenpotatoes/
+ 1200  ls
+ 1201  ruby ex1.rb 
+ 1202  vi r
+ 1203  ls
+ 1204  rm r
+ 1205  vi ex1.rb 
+ 1206  ls
+ 1207  ls
+ 1208  cd Documents/
+ 1209  ls
+ 1210  cd classSOA/
+ 1211  ls
+ 1212  cd myrottenpotatoes/
+ 1213  ls
+ 1214  vi Gemfile
+ 1215  bundle install --without production
+ 1216  cd ..
+ 1217  ls
+ 1218  cd myrottenpotatoes/
+ 1219  ls
+ 1220  rails generate cucumber:install capybara
+ 1221  vi Gemfile
+ 1222  rails generate cucumber:install capybara
+ 1223  rails generate cucumber_rails_training_whells:install
+ 1224  rails generate cucumber_rails_training_wheels:install
+ 1225  ls
+ 1226  cd features/step_definitions/
+ 1227  ls
+ 1228  vi web_steps.rb 
+ 1229  cd ..
+ 1230  rake db:test:prepare
+ 1231  cd features/
+ 1232  ls
+ 1233  vi AddMovie.feature
+ 1234  cucumber features/AddMovie.feature
+ 1235  cd ..
+ 1236  cucumber features/AddMovie.feature
+ 1237  cd app/controllers/
+ 1238  ls
+ 1239  vi welcome_controller.rb 
+ 1240  cd ..
+ 1241  cd features/
+ 1242  ls
+ 1243  cd ..
+ 1244  ls
+ 1245  cd app/controllers/
+ 1246  ld
+ 1247  ls
+ 1248  vi welcome_controller.rb 
+ 1249  rm welcome_controller.rb 
+ 1250  cd ..
+ 1251  cucumber features/AddMovie.feature
+ 1252  cd features/
+ 1253  ;s
+ 1254  ls
+ 1255  cd s
+ 1256  cd support/
+ 1257  ls
+ 1258  vi paths.rb 
+ 1259  rake routes
+ 1260  cd ..
+ 1261  cucumber features/AddMovie.feature
+ 1262  cd features/support/
+ 1263  vi paths.rb 
+ 1264  cucumber features/AddMovie.feature
+ 1265  cd ..
+ 1266  cucumber features/AddMovie.feature
+ 1267  cd Documents/
+ 1268  ld
+ 1269  ls
+ 1270  cd classSOA/
+ 1271  ld
+ 1272  ls
+ 1273  cd myrottenpotatoes/
+ 1274  ls
+ 1275  ls
+ 1276  cd Documents/
+ 1277  ls
+ 1278  cd classSOA/
+ 1279  ls
+ 1280  cd myrottenpotatoes/
+ 1281  ls
+ 1282  cd features/
+ 1283  ls
+ 1284  vi search_tmdb.feature
+ 1285  cd ..
+ 1286  cucumber features/search_tmdb.feature 
+ 1287  cucumber features/step_definitions/
+ 1288  ls
+ 1289  cd features/
+ 1290  ls
+ 1291  ccucumber AddMovie.feature 
+ 1292  cucumber AddMovie.feature 
+ 1293  cucumber search_tmdb.feature 
+ 1294  ls
+ 1295  cd s
+ 1296  cd support/
+ 1297  ls
+ 1298  vi paths.rb 
+ 1299  cd ..
+ 1300  ls
+ 1301  vi search_tmdb.feature 
+ 1302  vi AddMovie.feature 
+ 1303  vi search_tmdb.feature 
+ 1304  cucumber search_tmdb.feature 
+ 1305  cd support/
+ 1306  ls
+ 1307  vi paths.rb 
+ 1308  cd ..
+ 1309  cucumber search_tmdb.feature 
+ 1310  cd ..
+ 1311  cd app/views/movies/
+ 1312  ls
+ 1313  vi index.html.haml
+ 1314  cucumber feature/search_tmdb.feature 
+ 1315  cd ..
+ 1316  cucumber feature/search_tmdb.feature 
+ 1317  cucumber features/search_tmdb.feature 
+ 1318  rake routes
+ 1319  cd features/
+ 1320  ls
+ 1321  cd support/
+ 1322  ls
+ 1323  vi paths.rb 
+ 1324  cd .. 
+ 1325  cd ..
+ 1326  cd app/views/movies/
+ 1327  ls
+ 1328  vi index.html.haml~
+ 1329  rm index.html.haml~
+ 1330  ls
+ 1331  vi index.html.haml 
+ 1332  cd ..
+ 1333  cucumber features/search_tmdb.feature 
+ 1334  rake routes
+ 1335  vi app/views/movies/index.html.haml 
+ 1336  cucumber features/search_tmdb.feature 
+ 1337  ls
+ 1338  cd app/
+ 1339  ld
+ 1340  ls
+ 1341  cd controllers/
+ 1342  ls
+ 1343  vi movies_controller.rb 
+ 1344  ls
+ 1345  cd..
+ 1346  cd ..
+ 1347  ls
+ 1348  cd ..
+ 1349  ls
+ 1350  cd myrottenpotatoes/config/
+ 1351  ls
+ 1352  vi routes.rb 
+ 1353  cd ..
+ 1354  cucumber features/search_tmdb.feature 
+ 1355  vi features/search_tmdb.feature 
+ 1356  cucumber features/search_tmdb.feature 
+ 1357  vi features/search_tmdb.feature 
+ 1358  cucumber features/search_tmdb.feature 
+ 1359  cd features/
+ 1360  ls
+ 1361  cd s
+ 1362  cd support/
+ 1363  ls
+ 1364  cd ..
+ 1365  ls
+ 1366  cd config/
+ 1367  ls
+ 1368  cd ..
+ 1369  ls
+ 1370  cd app/
+ 1371  ls
+ 1372  cd ..
+ 1373  cd app/
+ 1374  ls
+ 1375  cd controllers/
+ 1376  ls
+ 1377  cd ..
+ 1378  ls
+ 1379  cd m
+ 1380  cd models/
+ 1381  ls
+ 1382  cd ..
+ 1383  ls
+ 1384  cd views/
+ 1385  ls
+ 1386  cd movies/
+ 1387  ls
+ 1388  cd .. 
+ 1389  cd ..
+ 1390  ls
+ 1391  cd ..
+ 1392  ls
+ 1393  cd features/
+ 1394  ls
+ 1395  cd step_definitions/
+ 1396  ls
+ 1397  vi movie_steps.rb
+ 1398  cd ..
+ 1399  ls
+ 1400  ci order.feature
+ 1401  cd order.feature
+ 1402  vi order.feature
+ 1403  cucumber order.feature 
+ 1404  vi appear.feature
+ 1405  cucumber appear.feature 
+ 1406  cd ..
+ 1407  ls
+ 1408  git init
+ 1409  git add myrottenpotatoes/
+ 1410  git commit -m "5-7"
+ 1411  git push https://github.com/SOA2012-101078506/classSOA.git
+ 1412  cd 
+ 1413  l
+ 1414  cd Documents/c
+ 1415  cd Documents/classSOA/myrottenpotatoes/
+ 1416  cd app/views/movies/
+ 1417  l
+ 1418  vi index.html.haml 
+ 1419  sudo vi edit.html.haml
+ 1420  cd Documents/classSOA/myrottenpotatoes/app/views/movies/
+ 1421  vi index.html.haml 
+ 1422  cd ..
+ 1423  cd controllers/
+ 1424  vi movies_controller.rb 
+ 1425  cd ..
+ 1426  cd features/
+ 1427  cd support/
+ 1428  vi paths.rb 
+ 1429  cd ..
+ 1430  vi search_tmdb.feature 
+ 1431  ls
+ 1432  vi ex1.rb 
+ 1433  ruby ex1.rb 
+ 1434  ruby -ku  ex1.rb 
+ 1435  ruby -ku ex1.rb 
+ 1436  vi ex1.rb 
+ 1437  ruby ex1.rb 
+ 1438  vi ex1.rb 
+ 1439  ruby ex1.rb 
+ 1440  vi ex1.rb 
+ 1441  ruby ex1.rb 
+ 1442  vi ex1.rb 
+ 1443  ruby ex1.rb 
+ 1444  Wq
+ 1445  vi ex1.rb 
+ 1446  Wq
+ 1447  ruby ex1.rb 
+ 1448  vi ex1.rb 
+ 1449  ruby ex1.rb 
+ 1450  l
+ 1451  ls
+ 1452  cd Documents/
+ 1453  ls
+ 1454  cd c
+ 1455  cd classSOA/
+ 1456  ls
+ 1457  cd myrottenpotatoes/
+ 1458  ls
+ 1459  vi Gemfile
+ 1460  gem install ruby-tmdb
+ 1461  sudo gem install ruby-tmdb
+ 1462  ls
+ 1463  cd app
+ 1464  ls
+ 1465  cd
+ 1466  ls
+ 1467  cd Documents/
+ 1468  ls
+ 1469  cd classSOA/
+ 1470  ls
+ 1471  cd myrottenpotatoes/
+ 1472  ls
+ 1473  vi Gemfile
+ 1474  bundle install --without production
+ 1475  rails generate rspec:install
+ 1476  ls
+ 1477  cd s
+ 1478  cd spec
+ 1479  ls
+ 1480  vi movies_controller_spec.rb
+ 1481  cd ..
+ 1482  ls
+ 1483  cd app
+ 1484  ls
+ 1485  cd controllers/
+ 1486  ls
+ 1487  vi movies_controller.rb 
+ 1488  cd ..
+ 1489  vi G
+ 1490  vi Gemfile
+ 1491  sudo bundle install
+ 1492  vi Gemfile
+ 1493  bundle show ZenTest
+ 1494  rspec -c spec/controllers/movies_Controller_spec.rb
+ 1495  ls
+ 1496  rm G
+ 1497  cd spec/
+ 1498  ls
+ 1499  crdir controllers
+ 1500  cmdir controllers
+ 1501  mkdir controllers
+ 1502  ls
+ 1503  cp -r movies_controller_spec.rb controllers/ 
+ 1504  ls
+ 1505  cd controllers/
+ 1506  ls
+ 1507  cd ..
+ 1508  rspec -c -fn spec/controllers/movies_controller_spec.rb 
+ 1509  cd spec/
+ 1510  ls
+ 1511  rm movies_controller_spec.rb 
+ 1512  ls
+ 1513  vi spec_helper.rb 
+ 1514  autotest
+ 1515  ls
+ 1516  cd controllers/
+ 1517  ls
+ 1518  vi movies_controller_spec.rb 
+ 1519  cd ..
+ 1520  rspec spec/controllers/movies_controller_spec.rb 
+ 1521  cd spec/controllers/
+ 1522  vi movies_controller_spec.rb 
+ 1523  rspec movies_controller_spec.rb 
+ 1524  vi movies_controller_spec.rb 
+ 1525  rspec movies_controller_spec.rb 
+ 1526  vi movies_controller_spec.rb 
+ 1527  rspec movies_controller_spec.rb 
+ 1528  vi movies_controller_spec.rb 
+ 1529  cd ..
+ 1530  cd .
+ 1531  cd ..
+ 1532  ls
+ 1533  cd config/
+ 1534  ls
+ 1535  vi routes.rb 
+ 1536  cd ..
+ 1537  ls
+ 1538  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1539  cd spec/controllers/
+ 1540  vi movies_controller_spec.rb 
+ 1541  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1542  rspec -c -fd movies_controller_spec.rb 
+ 1543  vi movies_controller_spec.rb 
+ 1544  rspec movies_controller_spec.rb 
+ 1545  vi movies_controller_spec.rb 
+ 1546  cd ..
+ 1547  ls
+ 1548  cd config/
+ 1549  ls
+ 1550  vi routes.rb 
+ 1551  cd ..
+ 1552  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1553  ld
+ 1554  ls
+ 1555  vi G
+ 1556  vi Gemfile
+ 1557  rm G
+ 1558  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1559  cd spec/controllers/
+ 1560  vi movies_controller_spec.rb 
+ 1561  ls
+ 1562  cd ..
+ 1563  ls
+ 1564  vi spec_helper.rb 
+ 1565  ls
+ 1566  cd ..
+ 1567  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1568  cd spec/controllers/
+ 1569  vi movies_controller_spec.rb 
+ 1570  rspec movies_controller_spec.rb 
+ 1571  cd ..
+ 1572  cd config/
+ 1573  vi routes.rb 
+ 1574  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1575  cd ..
+ 1576  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1577  ls
+ 1578  cd app/
+ 1579  ls
+ 1580  cd controllers/
+ 1581  ls
+ 1582  vi movies_controller.rb 
+ 1583  cd .
+ 1584  cd ..
+ 1585  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1586  touch app/views/movies/show_tmdb.html.haml
+ 1587  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1588  vi spec/controllers/movies_controller_spec.rb 
+ 1589  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1590  vi spec/controllers/movies_controller_spec.rb 
+ 1591  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1592  vi spec/controllers/movies_controller_spec.rb 
+ 1593  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1594  cd app/controllers/
+ 1595  ls
+ 1596  vi movies_controller.rb 
+ 1597  cd ..
+ 1598  rspec -c -fd spec/controllers/movies_controller_spec.rb 
+ 1599  vi spec/controllers/movies_controller_spec.rb 
+ 1600  ls
+ 1601  cd app
+ 1602  ls
+ 1603  cd views/
+ 1604  ls
+ 1605  cd movies/
+ 1606  ls
+ 1607  vi _movie_form.html.haml
+ 1608  ls
+ 1609  vi new.html.haml 
+ 1610  vi edit.html.haml
+ 1611  ls
+ 1612  vi edit.html.haml 
+ 1613  vi _movies.html.haml
+ 1614  cd ..
+ 1615  ls
+ 1616  cd ..
+ 1617  ls
+ 1618  cd models/
+ 1619  ls
+ 1620  vi movie.rb 
+ 1621  rails c
+ 1622  cd ..
+ 1623  ls
+ 1624  cd controllers/
+ 1625  ls
+ 1626  vi movies_controller.rb 
+ 1627  cd ..
+ 1628  ls
+ 1629  cd views/
+ 1630  ld
+ 1631  ls
+ 1632  cd movies/
+ 1633  ls
+ 1634  vi _movie_form.html.haml 
+ 1635  ls
+ 1636  vi edit.html.haml 
+ 1637  ls
+ 1638  vi new.html.haml 
+ 1639  cd ..
+ 1640  ls
+ 1641  cd ..
+ 1642  ls
+ 1643  cd m
+ 1644  cd models/
+ 1645  ls
+ 1646  vi movie.rb 
+ 1647  cd ..
+ 1648  cd views/movies/
+ 1649  vi _movie_form.html.haml 
+ 1650  vi new.html.haml 
+ 1651  vi edit.html.haml 
+ 1652  vi _movie.html.haml
+ 1653  ls
+ 1654  vi _movies.html.haml 
+ 1655  cd ..
+ 1656  ls
+ 1657  cd models/
+ 1658  ks
+ 1659  ls
+ 1660  cd ..
+ 1661  cd controllers/
+ 1662  ls
+ 1663  vi movies_controller.rb 
+ 1664  cd ..
+ 1665  cd views/movies/
+ 1666  ls
+ 1667  vi _movie_form.html.haml 
+ 1668  cd ..
+ 1669  cd controllers/
+ 1670  ls
+ 1671  vi movies_controller.rb 
+ 1672  cd ..
+ 1673  cd views/movies/
+ 1674  ls
+ 1675  vi _movie_form.html.haml 
+ 1676  ls
+ 1677  vi _movie_form.html.haml 
+ 1678  ls
+ 1679  rm _movies.html.haml 
+ 1680  la
+ 1681  ls
+ 1682  cd ..
+ 1683  ls
+ 1684  cd layouts/
+ 1685  ls
+ 1686  vi _footer.html.haml
+ 1687  cd ..
+ 1688  ls
+ 1689  cd models/
+ 1690  ls
+ 1691  vi movie.rb 
+ 1692  rails c
+ 1693  vi movie.rb 
+ 1694  cd ..
+ 1695  ls
+ 1696  cd controllers/
+ 1697  ls
+ 1698  vi application_controller.rb 
+ 1699  rails c
+ 1700  cd ..
+ 1701  rails generate model Moviegoer name:string provider:string uid:string
+ 1702  cd app/models/
+ 1703  ls
+ 1704  vi moviegoer.rb 
+ 1705  cd ..
+ 1706  ls
+ 1707  cd ..
+ 1708  ls
+ 1709  cd config/
+ 1710  ls
+ 1711  vi routes.rb 
+ 1712  cd ..
+ 1713  ls
+ 1714  cd app/controllers/
+ 1715  ls
+ 1716  vi application_controller.rb 
+ 1717  vi sessions_controller.rb
+ 1718  cd ..
+ 1719  ls
+ 1720  cd models/
+ 1721  ls
+ 1722  cd .
+ 1723  cd ..
+ 1724  cd views/movies/
+ 1725  ls
+ 1726  vi login_form.html.haml
+ 1727  cd ..
+ 1728  cd models/
+ 1729  ls
+ 1730  vi moviegoer.rb 
+ 1731  cd ..
+ 1732  ls
+ 1733  vi Gemfile
+ 1734  sudo bundle install
+ 1735  rake db:migrate
+ 1736  rake routes
+ 1737  cd app/controllers/
+ 1738  ld
+ 1739  ls
+ 1740  vi sessions_controller.rb 
+ 1741  cd ..
+ 1742  ls
+ 1743  cd config/
+ 1744  ld
+ 1745  ls
+ 1746  vi routes.rb 
+ 1747  ls
+ 1748  cd Documents/
+ 1749  ls
+ 1750  cd classSOA/
+ 1751  ls
+ 1752  cd myrottenpotatoes/
+ 1753  ld
+ 1754  ls
+ 1755  cd app/
+ 1756  ls
+ 1757  cd models/
+ 1758  ls
+ 1759  cd ..
+ 1760  ls
+ 1761  cd controllers/
+ 1762  ls
+ 1763  cd ,,
+ 1764  cd ..
+ 1765  ls
+ 1766  cd views/
+ 1767  ls
+ 1768  cd movies/
+ 1769  ls
+ 1770  vi _movie_form.html.haml 
+ 1771  cd ..
+ 1772  ls
+ 1773  cd ..
+ 1774  ld
+ 1775  ls
+ 1776  cd models/
+ 1777  ls
+ 1778  vi movie
+ 1779  vi movie.rb
+ 1780  vi moviegoer.rb 
+ 1781  cd ..
+ 1782  ls
+ 1783  cd controllers/
+ 1784  ls
+ 1785  cd //
+ 1786  cd
+ 1787  cd Documents/
+ 1788  ls
+ 1789  cd classSOA/
+ 1790  ls
+ 1791  cd myrottenpotatoes/
+ 1792  ls
+ 1793  cd app/
+ 1794  ls
+ 1795  cd views/
+ 1796  ls
+ 1797  cd movies/
+ 1798  ls
+ 1799  vi login_form.html.haml 
+ 1800  ls
+ 1801  cd ..
+ 1802  ls
+ 1803  cd ..
+ 1804  ls
+ 1805  cd controllers/
+ 1806  ks
+ 1807  ls
+ 1808  vi application_controller.rb 
+ 1809  cd ..
+ 1810  rails generate migration create_reviews
+ 1811  ls
+ 1812  cd db
+ 1813  ls
+ 1814  cd migrate/
+ 1815  ls
+ 1816  vi 20121209121107_create_reviews.rb 
+ 1817  cd ..
+ 1818  cd app/models
+ 1819  ls
+ 1820  vi review.rb
+ 1821  ls
+ 1822  vi movie.rb
+ 1823  vi moviegoer.rb 
+ 1824  cd ..
+ 1825  ls
+ 1826  cd ..
+ 1827  ls
+ 1828  git init
+ 1829  git add myrottenpotatoes/
+ 1830  git commit -m "7-3"
+ 1831  git add https://github.com/SOA2012-101078506/classSOA.git
+ 1832  git remote add https://github.com/SOA2012-101078506/classSOA.git
+ 1833  git remote add orgin https://github.com/SOA2012-101078506/classSOA.git
+ 1834  git remote add origin https://github.com/SOA2012-101078506/classSOA.git
+ 1835  git push
+ 1836  ls
+ 1837  cd D
+ 1838  cd Documents/
+ 1839  ld
+ 1840  ls
+ 1841  cd classSOA/
+ 1842  ls
+ 1843  cd myrottenpotatoes/
+ 1844  ls
+ 1845  vi Gemfile
+ 1846  ls
+ 1847  cd config/environments/
+ 1848  ls
+ 1849  vi production.rb 
+ 1850  cd ..
+ 1851  heroku create
+ 1852  heroku ps
+ 1853  heroku create --stack cedar
+ 1854  heroku ps
+ 1855  git push heroku master
+ 1856  heroku create --stack cedar
+ 1857  cd ..
+ 1858  git push heroku myrottenpotatoes/
+ 1859  heroku create --stack ceda
+ 1860  heroku create --stack cedar
+ 1861  git push heroku master
+ 1862  heroku ps
+ 1863  git push heroku master
+ 1864  heroku create --stack cedar
+ 1865  git push heroku master
+ 1866  ls
+ 1867  cd Documents/
+ 1868  ls
+ 1869  cd classSOA/
+ 1870  ls
+ 1871  cd myrottenpotatoes/
+ 1872  cd ..
+ 1873  heroku create --stack cedar
+ 1874  git push heroku master
+ 1875  heroku login
+ 1876  git push heroku master
+ 1877  heroku create
+ 1878  git push heroku maste
+ 1879  cd Documents/classSOA/
+ 1880  ls
+ 1881  cd myrottenpotatoes/
+ 1882  heroku create --stack cedar
+ 1883  git push heroku cedar
+ 1884  git push heroku master
+ 1885  heroku config
+ 1886  heroku logout
+ 1887  heroku login
+ 1888  git init
+ 1889  git add
+ 1890  git add .
+ 1891  git commit -m "init"
+ 1892  heroku create
+ 1893  git push heroku master
+ 1894  rals s
+ 1895  rails s
+ 1896  ls
+ 1897  vi Gemfile
+ 1898  bundle install
+ 1899  git push heroku master
+ 1900  sudo git push heroku master
+ 1901  heroku logout
+ 1902  heroku login 
+ 1903  heroku create myrottenpotatoes
+ 1904  heroku create myapp
+ 1905  heroku create de
+ 1906  dede
+ 1907  heroku create dede
+ 1908  git push heroku master
+ 1909  git push heroku dede
+ 1910  heroku logout
+ 1911  wget -q0- https://toolbelt.heroku.com/install-ubuntu.sh
+ 1912  wget -q0- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+ 1913  wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+ 1914  heroku login
+ 1915  heroku create
+ 1916  git push heroku master
+ 1917  sudo git push heroku master
+ 1918  git push heroku master
+ 1919  git push herok
+ 1920  git push heroku remote
+ 1921  git remote add github git@github.com:SOA2012-101078506/classSOA.git
+ 1922  git remote add heroku got@heroku.com:rocky-journey-4600.git
+ 1923  git push heroku refs/remotes/github/master:refs/heads/master
+ 1924  ls
+ 1925  cd ..
+ 1926  ls
+ 1927  cd ..
+ 1928  ls
+ 1929  cd.
+ 1930  cd ..
+ 1931  cd refs
+ 1932  cd
+ 1933  ls
+ 1934  git push heroku refs/remotes/github/master:refs/heads/master
+ 1935  cd Documents/classSOA/
+ 1936  cd //
+ 1937  cd ..
+ 1938  cd
+ 1939  cd Documents/
+ 1940  ls
+ 1941  git push heroku refs/remotes/github/master:refs/heads/master
+ 1942  git remote add heroku got@heroku.com:rocky-journey-4600.git
+ 1943  git push heroku refs/remotes/github/master:refs/heads/master
+ 1944  git remote add heroku git@heroku.com:rocky-journey-4600.git
+ 1945  git remote add heroku got@heroku.com:rocky-journey-4600.git
+ 1946  git push heroku refs/remotes/github/master:refs/heads/master
+ 1947  cd classSOA/
+ 1948  ls
+ 1949  cd myrottenpotatoes/
+ 1950  rails s
+ 1951  git remote -v
+ 1952  git remote rm heroku
+ 1953  git remote -v
+ 1954  git remote rm github
+ 1955  git remote -v
+ 1956  heroku logout
+ 1957  ls
+ 1958  github login
+ 1959  heroku login
+ 1960  heroku create --stack cedar
+ 1961  git push heroku master
+ 1962  cd ..
+ 1963  git clone git://github.com/heroku/ruby-sample.git
+ 1964  cd ruby-sample/
+ 1965  heroku create
+ 1966  git push heroku master
+ 1967  ls
+ 1968  cd ..
+ 1969  ls
+ 1970  cd classSOA/myrottenpotatoes/
+ 1971  ls
+ 1972  git push heroku master
+ 1973  cd Documents/classSOA/myrottenpotatoes/
+ 1974  ls
+ 1975  vi Gemfile
+ 1976  cd config/environments/
+ 1977  ls
+ 1978  vi production.rb 
+ 1979  cd ..
+ 1980  sudo bundle install --without production
+ 1981  heroku create --stack cedar
+ 1982  git push heroku master
+ 1983  ls
+ 1984  cat .git
+ 1985  cd .git/
+ 1986  ls
+ 1987  git remote -v
+ 1988  git remote rm heroku
+ 1989  git remote -v
+ 1990  git push heroku master
+ 1991  heroku create --stack cedar
+ 1992  git push heroku master
+ 1993  git remote add heroku git@heroku.com:young-spire-6054.git
+ 1994  git push heroku master
+ 1995  cd ..
+ 1996  ls
+ 1997  git push heroku master
+ 1998  ruby
+ 1999  man ruby
+ 2000  ruby --version
+ 2001  ls
+ 2002  cat Gemfile | grep linecache
+ 2003  cat Gemfile | grep 'linecache'
+ 2004  cat Gemfile
+ 2005  gem install linecache19 -v '0.5.13'
+ 2006  curl -OL http://rubyforge.org/frs/download.php/75414/linecache19-0.5.13.gem
+ 2007  gem install linecache19-0.5.13.gem
+ 2008  sudo gem install linecache19-0.5.13.gem
+ 2009  hist
+ 2010  history | grep 'sudo bundle'
+ 2011  sudo bundle install --without production
+ 2012  history | grep 'git push'
+ 2013  git push heroku master
+ 2014  git commit 'hgd'
+ 2015  git commit "kjg"
+ 2016  git commit
+ 2017  git commit -m "pre-heroku"
+ 2018  git add Gemfile
+ 2019  git add config/environments/production.rb
+ 2020  git add linecache19-0.5.13.gem
+ 2021  git commit -m "g"
+ 2022  git push heroku master
+ 2023  heroku ps
+ 2024  heroku run rake db:migrate
+ 2025  history
+ 2026  ls
+ 2027  cd ..
+ 2028  ls
+ 2029  history > herokunote.txt

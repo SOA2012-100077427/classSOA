@@ -1,0 +1,94 @@
+-#This file is app/views/movies/index.html.haml
+-#%h2 All Students
+-#%link(rel="stylesheet" type="text/css" href="style.css")
+
+-#.page-heading
+-#tabs
+  %ul
+    %li
+      %a{:href => "#devices-tab"}Zoo1
+    %li
+      %a{:href => "#options-tab"}Zoo2
+    %li
+      %a{:href => "#reports-tab"}Zoo3
+    %li
+      %a{:href => "#notes-tab"}Zoo4
+
+
+-#:javascript
+  $(document).ready(function() {
+  $( "#tabs" ).tabs();
+  });
+-#%P{:ALIGN => "center"}
+-#%IMG{:ALT => "Image Map", :BORDER => "0", :HEIGHT => "25", :SRC => "/assets/map1.gif", :USEMAP => "#menuline", :WIDTH => "400"}/
+-#%BODY
+  %MAP{:NAME => "menuline"}
+    %AREA{:COORDS => "0,0,100,24", :HREF => "index.htm", :SHAPE => "rect"}
+    %AREA{:COORDS => "101,0,200,24", :HREF => "intro.htm", :SHAPE => "rect"}
+    %AREA{:COORDS => "201,0,300,24", :HREF => "lesson21.htm", :SHAPE => "rect"}
+    %AREA{:COORDS => "301,0,400,24", :HREF => "topics.htm", :SHAPE => "rect"}
+-#test
+  %h1 Hello
+  %ul
+    %li
+      %a{:href => "#"} Thing One
+    %li
+      %a{:href => "#"} Thing Two
+    %li
+      %a{:href => "#"} Thing Three
+    %li
+      %a{:href => "#"} Thing Four
+  .clear
+  %p
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+-#devices-tab
+  zoo1
+-#<img src="/assets/zoo.png">
+%P{:ALIGN => "center"}
+  %IMG{:ALT => "Image Map", :BORDER => "0", :HEIGHT => "599", :SRC => "/assets/zoo.png", :USEMAP => "#zooline", :WIDTH => "803"}/
+
+%BODY
+  %MAP{:NAME => "zooline"}
+    %AREA{:COORDS => "688,218,792,329", :SHAPE => "rect", :href => "set"}
+    %AREA{:COORDS => "691,114,778,206", :SHAPE => "rect", :href => "memo"}
+    %AREA{:COORDS => "13,555,133,597", :HREF => "food", :SHAPE => "rect"}
+    %AREA{:COORDS => "163,152,616,444", :HREF => "beach", :SHAPE => "rect"}
+    -#%AREA{:COORDS => "301,0,400,24", :HREF => "topics.htm", :SHAPE => "rect"}
+-#%div{:style => "margin-left: 250px; margin-top: -0px; height: 150px; background-color: transparent; width: 750px;"}/
+-##id-top-bar{:calss => "top-bar", :style => "float: left; margin-top:-23px; height: 23px; width: 750px; background-color: transparent;"}/
+
+-#%table#students
+  %thead
+    %tr
+      %th Name
+      %th Grade
+      %th Class
+      %th Seatnumber
+      %th Grouping
+      %th Job
+      %th Pet Number
+      %th Pet Type
+      %th Food
+      
+  %tbody
+    - @students.each do |student|
+      %tr
+        %td= student.a 
+        %td= student.b
+        %td= student.c
+        %td= student.d
+        %td= student.e
+        %td= student.f
+        %td= student.g
+        %td= student.h
+        %td= student.i
+        %td= link_to "More about #{student.a}", student_path(student)
+-# add to end of index.html.haml
+-#options-tab
+
+-#= link_to 'Add new student', new_student_path
+
+-#<img src="/assets/zoo.png">
+-#reports-tab
+-#<img src="/assets/zoo.png">
+-#notes-tab

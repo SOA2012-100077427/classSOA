@@ -1,0 +1,19 @@
+%h2 All The Information About Student Home Works
+        
+%table#operates
+  %thead
+    %tr         
+      %th Home Work ID   
+      %th Home Work begins->
+      %th Home Work Description->
+      %th Home Work ends->
+  %tbody
+    - @operates.each do |operate|
+      %tr        
+        %td= operate.Hmd
+        %td= operate.Homework
+        %td= operate.HomeworkDescription
+        %td= operate.Homework2
+        %td= link_to "More about #{operate.Hmd}", operate_path(operate)
+= link_to 'Add New HomeWork Memo', new_operate_path 
+= link_to 'Back to Home Page', students_path

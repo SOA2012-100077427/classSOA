@@ -1,0 +1,6 @@
+%h2 Edit The Existing Students Homeworks/Assignments
+
+= form_tag operate_path(@operate), :method => :put do
+  = render :partial => 'operate_form'
+  = submit_tag 'Update Students Home Works!'
+= link_to 'Back to Student Homework', operates_path

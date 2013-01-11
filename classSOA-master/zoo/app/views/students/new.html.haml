@@ -1,0 +1,32 @@
+%h2 Create New Studentdata
+
+= form_tag students_path, :method => :post do
+
+  = label :studentdata, :name, 'Name'
+  = text_field :studentdata, :name
+
+  = label :studentdata, :grade, 'Grade'
+  = select :studentdata, :grade, ['1','2','3','4','5','6']
+
+  = label :studentdata, :year, 'year'
+  = text_field :studentdata, :year
+
+  = label :studentdata, :seatnumber, 'seatnumber'
+  = text_field :studentdata, :seatnumber
+
+  = label :studentdata, :job, 'job'
+  = text_field :studentdata, :job
+
+  = label :studentdata, :food, 'Food'
+  = text_field :studentdata, :food
+  
+  = label :studentdata, :grouping, 'Grouping'
+  = select :studentdata, :grouping, ['1','2','3','4','5','6']
+
+  = label :studentdata, :pettype, 'Pet type'
+  = select :studentdata, :pettype, ['Dog','Cat','Mouse','Bird']
+  
+  = label :studentdata, :petnumber, 'Number of pets'
+  = select :studentdata, :petnumber, ['1','2','3','4','5','6']
+
+  = submit_tag 'Save Changes'

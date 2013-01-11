@@ -1,0 +1,21 @@
+%h2 Create New Assignment/Memo For Students
+
+= form_tag operates_path, :method => :post do
+    
+  = label :operate, :Hmd, 'Homework ID'
+  = text_field :operate, :Hmd
+
+  = label :operate, :Homework, 'Date Of Memo Begins'
+  = date_select :operate, :Homework
+
+  = label :operate, :HomeworkDescription, 'Description of Memo'
+  = text_area :operate, :HomeworkDescription
+
+  = label :operate, :Homework2, 'Date Of Memo Ends'
+  = date_select :operate, :Homework2
+
+
+  = submit_tag 'Save Home Work!'
+= link_to 'Back to Home Page', students_path
+
+

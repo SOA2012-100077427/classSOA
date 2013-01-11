@@ -1,0 +1,34 @@
+%h1= @studentdata.title
+%h2 Details about #{@studentdata.title}
+ 
+%ul#details
+  %li
+    Name:
+    = @studentdata.name
+  %li
+    Year:
+    = @studentdata.year
+  %li
+    Grade:
+    = @studentdata.grade
+  %li
+    Seatnumber:
+    = @studentdata.seatnumber
+  %li
+    Grouping:
+    = @studentdata.grouping
+  %li
+    JOb:
+    = @studentdata.job
+  %li
+    Pettype:
+    = @studentdata.pettype
+  %li
+    Food:
+    = @studentdata.Food
+  %li
+    Petnumber:
+    = @studentdata.petnumber
+
+%p
+    =link_to 'Back ro student list', studentdata_path

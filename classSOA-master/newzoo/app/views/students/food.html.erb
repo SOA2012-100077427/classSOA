@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      canvas {
+        border: 1px solid #9C9898;
+      }
+        
+    </style>
+    <script src="http://www.html5canvastutorials.com/libraries/kinetic-v4.0.1.js"></script>
+    <script>
+      function loadImages(sources, callback) {
+        var assetDir = "/assets/";
+        var images = {};
+        var loadedImages = 0;
+        var numImages = 0;
+        
+
+        for(var src in sources) {
+          numImages++;
+        }
+        for(var src in sources) {
+          images[src] = new Image();
+          images[src].onload = function() {
+            if(++loadedImages >= numImages) {
+              callback(images);
+            }
+          };
+          images[src].src = assetDir + sources[src];
+        }
+      }
+      function isNearOutline(animal, outline) {
+        var a = animal;
+        var o = outline;
+        if(a.attrs.x > o.x - 20 && a.attrs.x < o.x + 20 && a.attrs.y > o.y - 20 && a.attrs.y < o.y + 20) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+      function drawBackground(background, beachImg, text) {
+        var canvas = background.getCanvas();
+        var context = background.getContext();
+
+        context.drawImage(beachImg, 0, 0);
+        context.font = "20pt Calibri";
+        context.textAlign = "center";
+        context.fillStyle = "black";
+        context.fillText(text, background.getStage().getWidth() / 2, 40);
+      }
+      function initStage(images) {
+        var stage = new Kinetic.Stage({
+          container: "container",
+          width: 803,
+          height: 599
+        });
+        var background = new Kinetic.Layer();
+        var animalLayer = new Kinetic.Layer();
+        var animalShapes = [];
+        var score = 0;
+
+        // image positions
+        var animals = {
+          snake: {
+            x: 250,
+            y: 70
+          },
+          lion: {
+            x: 370,
+            y: 270
+          },
+        };
+
+        var outlines = {
+          snake_black: {
+            x: 380,
+            y: 180
+          },
+          lion_black: {
+            x: 30,
+            y: 500
+          },
+        };
+
+        // create draggable animals
+        for(var key in animals) {
+          // anonymous function to induce scope
+          (function() {
+            var privKey = key;
+            var anim = animals[key];
+
+            var animal = new Kinetic.Image({
+              image: images[key],
+              x: anim.x,
+              y: anim.y,
+              draggable: true
+            });
+            
+            animal.createImageBuffer();
+
+            animal.on("dragstart", function() {
+              animal.moveToTop();
+              animalLayer.draw();
+            });
+            /*
+             * check if animal is in the right spot and
+             * snap into place if it is
+             */
+            animal.on("dragend", function() {
+              var outline = outlines[privKey + "_black"];
+              if(!animal.inRightPlace && isNearOutline(animal, outline)) {
+                animal.attrs.x = outline.x;
+                animal.attrs.y = outline.y;
+                animalLayer.draw();
+                // disable drag and drop
+                animal.setDraggable(false);
+                animal.inRightPlace = true;
+
+                if(++score >= 2) {
+                  var text = "YEAH!!!!!!"
+                  drawBackground(background, images.beach, text);
+                }
+              }
+            });
+            // make animal glow on mouseover
+            animal.on("mouseover", function() {
+              animal.setImage(images[privKey + "_glow"]);
+              animalLayer.draw();
+              document.body.style.cursor = "pointer";
+            });
+            // return animal on mouseout
+            animal.on("mouseout", function() {
+              animal.setImage(images[privKey]);
+              animalLayer.draw();
+              document.body.style.cursor = "default";
+            });
+
+            animal.on("dragmove", function() {
+              document.body.style.cursor = "pointer";
+            });
+
+            animalLayer.add(animal);
+            animalShapes.push(animal);
+          })();
+        }
+
+        // create animal outlines
+        for(var key in outlines) {
+          // anonymous function to induce scope
+          (function() {
+            var imageObj = images[key];
+            var out = outlines[key];
+
+            var outline = new Kinetic.Image({
+              image: imageObj,
+              x: out.x,
+              y: out.y
+            });
+
+            animalLayer.add(outline);
+          })();
+        }
+
+        stage.add(background);
+        stage.add(animalLayer);
+
+        drawBackground(background, images.beach, "Please feed and clean our cute elephant!");
+      }
+      
+      window.onload = function() {
+        
+        var sources = {
+          beach: "goo.jpg",
+          snake: "banana-02.png",
+          snake_glow: "banana-02-01.png",
+          snake_black: "good-01-01.png",
+          lion: "shit-01.png",
+          lion_glow: "shit-02-01.png",
+          lion_black: "shitonbin-01.png",
+        };
+        loadImages(sources, initStage);
+      };
+
+    </script>
+  </head>
+  
+    <div id="container"></div>
+  </body>
+  <a href="/students">Back to Home Page</a>
+</html>

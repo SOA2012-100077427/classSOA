@@ -1,0 +1,167 @@
+The join method took that list of reversed lines and put them together into a string. (Sure, you could have also just usedto_s.)
+
+books["Gra-vity's Rainb-ow"]
+=> :splendid
+books.valu-es
+=> [:splendid]
+> books.keys-
+=> ["Gravity's Rainbow"]
+
+
+
+	* 
+
+
+ratings = Hash.-new(0)
+=> {}
+Success!
+> books.valu-es.each {|rat-e| ratin-gs[rate] += 1 }
+=> [:splendid, :good, :good, :good, :bad, :bad]
+> ratings
+=> {:splendid=>1, :good=>3, :bad=>2}
+
+The each method takes two arguments - an elementand a block. The element, contained within the pipes, is like a placeholder. Whatever you put in the pipes will be used in the block to represent each element of the array in turn. The block is the line of code that is executed on each of the array items, and is handed the element to process.
+
+	* Hashes. The little dictionary with the curly pages: {}.
+	* Symbols. Tiny, efficient code words with a colon: :splendid.
+	* Blocks. Chunks of code which can be tacked on to many of Ruby's methods. Here's the code you used to build a scorecard:books.values.each { |rate| ratings[rate] += 1
+
+
+
+load_comics method. What is happening? You're passing in the path variable and you're getting back thecomics variable. Ruby lets the comics hash trickle out the end of the method.
+A number of methods were used to get the job done. See if you can spot them.
+
+	* File.foreach is a method which opens a file and hands each line to the block. The line variable inside the do...end block took turns with each line in the file.
+	* split is a method for strings, which breaks the string up into an array. An axe is laid on the colon and the line is chopped in half, giving us the url and name for each comic.
+	* strip removes extra spaces around the name. Just in case.
+
+FileUtils.-cp('/comic-s.txt', '/Hom-e/comics.t-xt')
+
+file copy
+
+To add your own comic to the list, let's open the file inappend mode.
+Start by entering this code:File.open("/Home/comics.txt", "a") do |f|
+
+
+
+
+
+ make a list with the popup library:
+Popup.make do h1 "Things To Do" list do p "Try out Ruby" p "Ride a tiger" p "(down River Euphrates)" end end
+
+
+
+
+
+
+	* You added your own method with def and you used that load_comics method several times.
+	* Libraries. You used the require method to load the popup library.
+By typing: require 'popup'
+	* And if that wasn't enough, you made your own web page from a list of comics in a file. You made a real program!
+
+
+
+entry.time = Time.now
+And the mood: entry.mood = :sick
+And the post itself: entry.fulltext = "I can't 
+
+
+
+
+	* In case of killing rails server
+
+[2012-10-25 20:07:39] WARN  TCPServer Error: Address already in use - bind(2)
+
+soa@ctm135048:~/Documents/classSOA/myrottenpotatoes/app$ lsof|grep 3000
+ruby      30628             soa    5u     IPv4 1491676      0t0     TCP *:3000 (LISTEN)
+soa@ctm135048:~/Documents/classSOA/myrottenpotatoes/app$ kill -9 30628
+soa@ctm135048:~/Documents/classSOA/myrottenpotatoes/app$
+
+
+
+	* Haml::SyntaxError in Movies#indexShowing /home/soa/Documents/classSOA/myrottenpotatoes/app/views/movies/index.html.haml where line #5 raised:
+Inconsistent indentation: 3 spaces were used for indentation, but the rest of the document was indented using 2 spaces.
+
+Extracted source (around line #5):
+2: 
+3: %table#movies
+4:   %thread
+5:    %tr
+6:        %th Movie Title
+7:        %th Rating
+8:        %th Release Date
+
+
+
+
+
+SyntaxError in Movies#newShowing /home/soa/Documents/classSOA/myrottenpotatoes/app/views/movies/new.html.haml where line #11 raised:
+/home/soa/Documents/classSOA/myrottenpotatoes/app/views/movies/new.html.haml:11: syntax error, unexpected tSTRING_BEG, expecting ')'
+...false(( label :movie, :rating 'Rating'
+...                               ^
+
+Extracted source (around line #11):
+8:   = test_field :movie, :title
+9: 
+10: 
+11:   = label :movie, :rating 'Rating'
+12:   = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+13: 
+14: 
+
+
+Trace of template inclusion: app/views/movies/new.html.haml
+Rails.root: /home/soa/Documents/classSOA/myrottenpotatoes
+
+
+
+
+
+NoMethodError in Movies#newShowing /home/soa/Documents/classSOA/myrottenpotatoes/app/views/movies/new.html.haml where line #8 raised:
+undefined method `test_field' for #<#<Class:0x00000002594ed8>:0x007f768c333358>
+
+Extracted source (around line #8):
+5: 
+6: 
+7:   = label :movie, :title, 'Title'
+8:   = test_field :movie, :title
+9: 
+10: 
+11:   = label :movie, :rating, 'Rating'
+
+
+Unknown action
+
+The action 'create' could not be found for MoviesController
+
+
+
+
+	* typo
+
+@movie = movie.find(id)
+
+
+
+
+	* 
+
+
+SyntaxError in MoviesController#index
+/home/soa/Documents/classSOA/myrottenpotatoes/app/models/movie.rb:3: syntax error, unexpected keyword_end, expecting $end
+
+Rails.root: /home/soa/Documents/classSOA/myrottenpotatoes
+Application Trace | Framework Trace | Full Trace
+app/controllers/movies_controller.rb:1:in `<top (required)>'
+
+ActiveModel::MassAssignmentSecurity::Error in MoviesController#create
+Can't mass-assign protected attributes: title, rating, release_date(1i), release_date(2i), release_date(3i)
+
+add the following to the movie.rb file in model
+
+attr_accessible :title
+
+attr_accessible :rating
+
+attr_accessible :release_date
+

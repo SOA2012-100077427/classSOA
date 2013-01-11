@@ -1,0 +1,36 @@
+-# in app/views/movies/show.html.haml
+
+%h2 Details about #{@student.id}
+
+%ul#details
+  %li
+    Name:
+    = @student.a
+  %li
+    Grade:
+    = @student.b
+  %li
+    Class:
+    = @student.c
+  %li
+    Seatnumber:
+    = @student.d
+  %li
+    Grouping:
+    = @student.e
+  %li
+    Job:
+    = @student.f
+  %li
+    Pet Number:
+    = @student.g
+  %li
+    Pet type:
+    = @student.h
+  %li
+    Food:
+    = @student.i
+
+= link_to 'Edit info', edit_student_path(@student)
+= link_to 'Back to student list', students_path
+= link_to 'Delete', student_path(@student), :method => :delete

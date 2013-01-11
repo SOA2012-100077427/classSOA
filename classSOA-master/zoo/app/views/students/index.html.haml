@@ -1,0 +1,28 @@
+%h2 All Studentdata
+<img src="https://dl.dropbox.com/u/46030305/zoo.jpg">
+%table#studentdata
+  %thead
+    %tr
+      %th Studentdata Name
+      %th Year 
+      %th Grade
+      %th Seatnumber
+      %th Grouping
+      %th Job
+      %th Pettype
+      %th Food
+      %th Petnumber
+  %tbody
+    - @studentdata.each do |studentdata|
+      %tr
+        %td= studentdata.Name 
+        %td= studentdata.Year
+        %td= studentdata.Grade
+        %td= studentdata.Seatnumber
+        %td= studentdata.Grouping
+        %td= studentdata.Job
+        %td= studentdata.Pettype
+        %td= studentdata.Food
+        %td= studentdata.Petnumber
+        %td= link_to "More about #{studentdata.name}", movie_path(studentdata)
+= link_to 'Add Student ID', new_student_path

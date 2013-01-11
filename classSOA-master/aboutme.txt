@@ -1,0 +1,12 @@
+Name:De Hao
+NickName:D
+
+Department:ISS
+Track:IT
+
+Programming background:
+php
+c
+python
+
+

@@ -1,0 +1,26 @@
+%table#students
+  %thead
+    %tr
+      %th Name
+      %th Grade
+      %th Class
+      %th Seatnmber
+      %th Grouping
+      %th Job
+      %th Pet Type
+      %th Food
+
+    %tbody
+      - @students.each do |student|
+        %tr
+          %td= student.a
+          %td= student.b
+          %td= student.c
+          %td= student.d
+          %td= student.e
+          %td= student.f
+          %td= student.h
+          %td= student.i
+          %td= link_to "More about #{student.a}", student_path(student)
+= link_to 'Add new student', new_student_path
+= link_to 'Back to Main Page', students_path

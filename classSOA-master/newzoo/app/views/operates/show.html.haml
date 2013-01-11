@@ -1,0 +1,23 @@
+%h2 Details about #{@operate.id}
+ 
+%ul#details
+  %li
+    Homework ID:
+    = @operate.Hmd
+  %li
+    Start Homework:
+    = @operate.Homework
+  %li
+    Homework Description:
+    = @operate.HomeworkDescription
+  %li
+    End Homework:
+    = @operate.Homework2
+
+= link_to 'Edit info**'    , edit_operate_path(@operate)
+= link_to 'Delete**'       , operate_path(@operate), :method => :delete
+= link_to 'Move to Home work page**'     , operates_path
+= link_to 'Back to Homepage', students_path
+
+
+
